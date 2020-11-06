@@ -1,3 +1,12 @@
+:root {
+  --primary-white-color: #ffffff;
+  --primary-text-color: #000000;
+  --modal-secondary-text-color: #8c8c8c;
+  --footer-text-color: #545454;
+  --footer-bg-color: #f7f7f7;
+  --accent-color: #ff6b08;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -6,4 +15,50 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  width: 320px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding: 0 75px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding: 0 71px;
+  }
 }
