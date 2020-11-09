@@ -4,12 +4,10 @@
   height: 44px;
   background: rgba(0, 0, 0, 0.56);
   outline: 0px;
-  outline: 0px;
   border: 1px solidvar(--primary-white-color);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
-  margin-right: 18px;
 }
 .library-btn:focus {
   background-color: var(--accent-color);
