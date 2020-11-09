@@ -20,10 +20,11 @@ const findPopular = function () {
         fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
           .then(data => data.json())
           .then(data => {
-            data.genres.forEach(el => {
-              // document
-              //   .querySelector('.gallery-list-item')
-              //   .insertAdjacentHTML('beforeend', `<p>${el.name}</p>`);
+            data.genres.forEach(avast => {
+              console.log(avast);
+              document.querySelectorAll('.gallery-list-item').forEach(el => {
+                el.lastChild.textContent = avast.name;
+              });
             });
           });
       });
