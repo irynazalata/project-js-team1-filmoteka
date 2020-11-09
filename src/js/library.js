@@ -9,14 +9,14 @@ export default function library() {
     
 
     const libraryOpen = function () {
-        container.removeChild(searchBox);
+            container.removeChild(searchBox);
         container.removeChild(errorP);
-        changeBgr.classList.replace("header", "library-bgr");
+        changeBgr.classList.replace("header", "library");
         emphasisMinus.classList.remove("current");
         emphasisPlus.classList.add("current");
        
         container.insertAdjacentHTML("beforeend",
-            '<div class="container-button"><button class="library-btn indent-btn">Watched</button><button class="library-btn">queue</button></div>')
+            '<div class="container-button"><button class="header-btn-watched indent-btn">Watched</button><button class="header-btn-queue">queue</button></div>')
     };
 
     emphasisPlus.addEventListener("click", libraryOpen);
