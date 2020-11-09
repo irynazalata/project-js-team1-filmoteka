@@ -1,10 +1,10 @@
 .header-btn-watched {
-  color: #fff;
+  color: var(--primary-white-color);
   width: 130.19px;
   height: 44px;
   background-color: rgba(0, 0, 0, 0.56);
   outline: 0px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--primary-white-color);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
@@ -15,12 +15,12 @@
   border: 1px solid var(--accent-color);
 }
 .header-btn-queue {
-  color: #fff;
+  color: var(--primary-white-color);
   width: 130.19px;
   height: 44px;
   background-color: rgba(0, 0, 0, 0.56);
   outline: 0px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--primary-white-color);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
