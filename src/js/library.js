@@ -16,7 +16,7 @@ export default function library() {
         emphasisPlus.classList.add("current");
        
         container.insertAdjacentHTML("beforeend",
-            '<div class="container-button"><button class="header-btn-watched indent-btn">Watched</button><button class="header-btn-queue">queue</button></div>')
+            '<div class="container-button"><button class="library-btn indent-btn" id="watched">Watched</button><button class="library-btn" id="queue">queue</button></div>')
     };
 
     emphasisPlus.addEventListener("click", libraryOpen);

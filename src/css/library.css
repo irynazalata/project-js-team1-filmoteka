@@ -1,35 +1,24 @@
-.header-btn-watched {
+.library-btn {
   color: var(--primary-white-color);
   width: 130.19px;
   height: 44px;
-  background-color: rgba(0, 0, 0, 0.56);
+  background: rgba(0, 0, 0, 0.56);
   outline: 0px;
-  border: 1px solid var(--primary-white-color);
+  outline: 0px;
+  border: 1px solidvar(--primary-white-color);
   box-sizing: border-box;
   border-radius: 5px;
   text-transform: uppercase;
   margin-right: 18px;
 }
-.header-btn-watched:focus {
-  background: var(--accent-color);
+.library-btn:focus {
+  background-color: var(--accent-color);
   border: 1px solid var(--accent-color);
 }
-.header-btn-queue {
+.indent-btn {
   color: var(--primary-white-color);
-  width: 130.19px;
-  height: 44px;
-  background-color: rgba(0, 0, 0, 0.56);
-  outline: 0px;
-  border: 1px solid var(--primary-white-color);
-  box-sizing: border-box;
-  border-radius: 5px;
-  text-transform: uppercase;
+  margin-right: 18px;
 }
-.header-btn-queue:focus {
-  background: var(--accent-color);
-  border: 1px solid var(--accent-color);
-}
-
 .container-button {
   margin-top: 46px;
   display: flex;
