@@ -1,8 +1,6 @@
-<li class="gallery-list-item">
-    <img src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="{{original_title}}" class="gallery-item-img">
-    <h3 class="gallery-item-name">{{title}}
+<li class="gallery-list-item" data-id="{{id}}">
+    <img src="{{poster_path}}" alt="{{original_title}}" class="gallery-item-img">
+    <h3 class="gallery-item-title">{{title}}
     </h3>
-    {{!-- {{#each genre_ids}} --}}
-    <p class="gallery-item-genre" data-genre={{genre_ids}}></p>
-    {{!-- {{/each}} --}}
+    <p class="gallery-item-genre" data-id="{{id}}"> | {{release_date}}</p>
 </li>
