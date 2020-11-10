@@ -117,7 +117,7 @@ img {
   padding-top: 41px;
   padding-bottom: 97px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .text-logo {
     display: none;
   }
