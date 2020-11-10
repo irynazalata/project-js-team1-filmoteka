@@ -1,0 +1,41 @@
+<div class="pop-up container">
+  <img src="{{poster_path}}" alt="" class="pop-up-img">
+  <div class="pop-up-content">
+    <h2 class="pop-up-title">{{title}}</h2>
+    <div class="pop-up-info">
+      <ul class="pop-up-info-list">
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title">Vote / Votes</p>
+          <p class="vote-info vote-average">{{vote_average}}</p>
+          <span class="vote-span"> / </span>
+          <p class="pop-up-info-text vote-count">{{vote_count}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title">Popularity</p>
+          <p class="pop-up-info-text">{{popularity}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title original-title">Original Title</p>
+          <p class="original-title-name">{{original_title}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title">Genre</p>
+          <ul class="genre-name">
+            {{#each genres}}
+            <li class="pop-up-info-text">{{this.name}}<p> / </p>
+            </li>
+            {{/each}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="pop-up-description">
+      <p class="pop-up-description-title">ABOUT</p>
+      <p class="pop-up-description-text">{{overview}}</p>
+    </div>
+    <div class="pop-up-buttons">
+      <button type="button" class="pop-up-btn-watched">ADD TO WATCHED</button>
+      <button type="button" class="pop-up-btn-queue">ADD TO QUEUE</button>
+    </div>
+  </div>
+</div>

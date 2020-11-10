@@ -1,9 +1,9 @@
 import './styles.css';
 import './js/mainCards.js';
-import "./css/library.css"
 import "./js/search.js"
-import library from "./js/library.js"
-
+import "./css/library.css";
+import library from "./js/library.js";
+import './js/popUp.js';
+import './js/backToTop.js';
 
 library();
-
