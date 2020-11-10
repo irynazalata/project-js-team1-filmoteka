@@ -9,7 +9,7 @@
   border-radius: 5px;
   text-transform: uppercase;
 }
-.library-btn:focus {
+.btn-active {
   background-color: var(--accent-color);
   border: 1px solid var(--accent-color);
 }
