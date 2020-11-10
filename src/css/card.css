@@ -36,6 +36,10 @@
   .gallery-list-item:nth-child(-n + 6) {
     margin-bottom: 30px;
   }
+  .gallery-item-img {
+    height: 398px;
+    width: 100%;
+  }
   .gallery-list-item:nth-child(odd) {
     margin-right: 30px;
   }
@@ -66,5 +70,9 @@
   }
   .gallery-list-item {
     width: 274px;
+  }
+  .gallery-item-img {
+    height: 398px;
+    width: 100%;
   }
 }

@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="" />
-  <title>Filmoteka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
-</head>
-
-<body>
-  <!--Header-->
-  <header class="header">
-    <div class="header-container container">
-      <div class="logo-container">
-        <a href="./index.html" class="link-logo link">
-          <svg class="icon-logo" width="24" height="24">
-            <use href="./images/sprite.svg#icon-logo"></use>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <title>Filmoteka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header class="header">
+      <div class="header-container container">
+        <div class="logo-container">
+          <a href="./index.html" class="link-logo link">
+            <svg class="icon-logo" width="24" height="24">
+              <use href="./images/sprite.svg#icon-logo"></use>
+            </svg>
+            <span class="text-logo"> Filmoteka</span></a>
+          <nav class="navigation">
+            <ul class="header-list">
+              <li class="header-list-item">
+                <a href="./index.html" class="link-header current " id="home">HOME</a>
+              </li>
+              <li class="header-list-item link">
+                <button class="link-library" id="my-library">MY LIBRARY</button>
+                </li>
+            </ul>
+          </nav>
+        </div>
+         <form class="search-box" action="">
+          <input type="text" id="search" class="search-input" placeholder="Search the film">
+          <svg class="icon-modal" width="12" height="12">
+            <use href="./images/sprite.svg#icon-magnifier"></use>
           </svg>
-          <span class="text-logo"> Filmoteka</span></a>
-        <nav class="navigation">
-          <ul class="header-list">
-            <li class="header-list-item">
-              <a href="./index.html" class="link-header current " id="home">HOME</a>
-            </li>
-            <li class="header-list-item link">
-              <button class="link-library" id="my-library">MY LIBRARY</button>
-            </li>
+        </form>
+        <p class="error"></p>
+      </div>
+    </header>
+    <main>
+      <section class="main">
+        <div class="container">
+          <h2 class="visually-hidden">gallery</h2>
+          <ul class="home-film-list">
+            <!-- li в ul вставляються динамічно  -->
+            <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
           </ul>
         </nav>
       </div>
