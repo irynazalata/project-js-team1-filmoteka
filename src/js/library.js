@@ -7,6 +7,8 @@ export default function library() {
     const emphasisMinus = document.querySelector("#home");
     const emphasisPlus = document.querySelector("#my-library");
     
+   
+
 
     const libraryOpen = function () {
             container.removeChild(searchBox);
@@ -16,8 +18,27 @@ export default function library() {
         emphasisPlus.classList.add("current");
        
         container.insertAdjacentHTML("beforeend",
-            '<div class="container-button"><button class="library-btn indent-btn" id="watched">Watched</button><button class="library-btn" id="queue">queue</button></div>')
-    };
+            '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn" id="queue">queue</button></div > ')
+    
+        emphasisPlus.removeEventListener("click", libraryOpen);
+    
+        const containerButton = document.querySelector(".container-button");
+        const watched = document.querySelector("#watched");
+        const queue = document.querySelector("#queue");
 
+        const buttonActive = function (event) {
+         event.target
+            if (event.target.nodeName !== "BUTTON") {
+              return
+            } else {
+            watched.classList.toggle("btn-active")
+            queue.classList.toggle("btn-active")
+            };   
+        };
+        
+        containerButton.addEventListener("click", buttonActive);
+        
+    };   
+  
     emphasisPlus.addEventListener("click", libraryOpen);
 };
