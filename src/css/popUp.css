@@ -161,6 +161,7 @@
   }
   .pop-up-img {
     width: 294px;
+    height: 416px;
     margin: 0 auto 20px;
   }
   .pop-up-content {
@@ -203,7 +204,7 @@
   }
   .pop-up-img {
     width: auto;
-    height: auto;
+    height: 416px;
   }
   .pop-up-content {
     margin-left: 30px;
@@ -218,5 +219,11 @@
   .trailer {
     width: 60vw;
     height: 60vh;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding: 60px 71px;
   }
 }
