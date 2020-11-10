@@ -26,7 +26,7 @@ const findPopular = async function () {
                 data.genres.forEach(i => {
                   el.insertAdjacentHTML(
                     'afterbegin',
-                    `<span class="gallery-item-genre-title">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                    `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
                   );
                 });
               }
