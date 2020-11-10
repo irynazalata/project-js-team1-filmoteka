@@ -46,6 +46,9 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .gallery-list-item {
+    width: 293px;
+  }
 }
 @media screen and (min-width: 1024px) {
   .gallery-list-item {
@@ -60,5 +63,8 @@
   .home-film-list {
     display: flex;
     flex-wrap: wrap;
+  }
+  .gallery-list-item {
+    width: 274px;
   }
 }
