@@ -134,8 +134,18 @@
   background-color: var(--primary-white-color);
   border: 1px solid var(--primary-text-color);
 }
+
+.pop-up-btn-trailer {
+  color: var(--primary-text-color);
+  background-color: var(--primary-white-color);
+  border: 1px solid var(--primary-text-color);
+}
 .pop-up-buttons button:focus {
   outline: none;
+}
+.trailer {
+  width: 100vw;
+  height: 60vh;
 }
 
 @media screen and (max-width: 1023px) {
@@ -169,12 +179,19 @@
   }
   .pop-up-buttons button {
     margin-bottom: 60px;
-    width: 136px;
+    width: 126px;
     height: 44px;
   }
   .pop-up-btn-watched {
     margin-right: 15px;
     padding: 13px 10px;
+  }
+  .pop-up-btn-queue {
+    margin-right: 15px;
+  }
+  .trailer {
+    width: 70vw;
+    height: 60vh;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -197,5 +214,9 @@
   }
   .original-title-name {
     width: 270px;
+  }
+  .trailer {
+    width: 60vw;
+    height: 60vh;
   }
 }
