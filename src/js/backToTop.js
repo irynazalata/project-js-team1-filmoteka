@@ -1,16 +1,16 @@
-import '../css/style.css';
+import '../css/backToTop.css';
 
-const goTopBtn = document.querySelector('.back_to_top');
+const goTopBtn = document.querySelector('.back-to-top');
 
 function trackScroll() {
   const scrolled = window.pageYOffset;
   const coords = document.documentElement.clientHeight;
 
   if (scrolled > coords) {
-    goTopBtn.classList.add('back_to_top-show');
+    goTopBtn.classList.add('back-to-top-show');
   }
   if (scrolled < coords) {
-    goTopBtn.classList.remove('back_to_top-show');
+    goTopBtn.classList.remove('back-to-top-show');
   }
 }
 

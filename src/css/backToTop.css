@@ -1,4 +1,4 @@
-.back_to_top {
+.back-to-top {
   position: fixed;
   bottom: 80px;
   right: 40px;
@@ -13,29 +13,29 @@
   border-radius: 50%;
   display: none;
 }
-.back_to_top:hover {
+.back-to-top:hover {
   background: var(--accent-color);
   filter: saturate(300%);
 }
-.back_to_top-show {
+.back-to-top-show {
   display: block;
 }
-.back_to_top::before,
-.back_to_top::after {
+.back-to-top::before,
+.back-to-top::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.back_to_top::before {
+.back-to-top::before {
   width: 4px;
   height: 19px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   background-color: var(--primary-white-color);
 }
-.back_to_top::after {
+.back-to-top::after {
   width: 15px;
   height: 15px;
   transform: translate(-50%, -50%) rotate(45deg);
