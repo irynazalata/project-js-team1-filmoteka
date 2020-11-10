@@ -11,9 +11,10 @@ export default function library() {
 
 
     const libraryOpen = function () {
-            container.removeChild(searchBox);
+        container.removeChild(searchBox);
         container.removeChild(errorP);
         changeBgr.classList.replace("header", "library");
+        container.classList.replace("header-container", "library-container");
         emphasisMinus.classList.remove("current");
         emphasisPlus.classList.add("current");
        
