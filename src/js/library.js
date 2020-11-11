@@ -51,7 +51,6 @@ export default function library() {
            document.querySelector('#pagination').classList.add('is-none-pagination');
           
            if (array !== null) {
-            document.querySelector('#pagination').classList.remove('is-none-pagination');
                array.forEach(el => (
                    ul.insertAdjacentHTML('afterbegin', cards(el))
             
@@ -65,7 +64,6 @@ export default function library() {
          
         const array = JSON.parse(localStorage.getItem('Queue'));
         if (array !== null) {
-            document.querySelector('#pagination').classList.remove('is-none-pagination');
             array.forEach(el => (
                 ul.insertAdjacentHTML('afterbegin', cards(el))
             ))

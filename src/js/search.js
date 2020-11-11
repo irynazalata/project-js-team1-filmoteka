@@ -10,23 +10,22 @@ const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
-
-export const getData = function (e) {
-
+const getData = function (e) {
     e.preventDefault();  
     let eventTarget;
     e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
     if (eventTarget.value.length >=1) {
         error.innerHTML = "";
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}`)
-        .then(data => data.json())
-        .then(({results}) => {
-            if (results.length <= 0) {
-            return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
-            }
-            ul.innerHTML = "";
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}`)
+            .then(data => data.json())
+            .then(data => {
+                if (data.results.length <= 0) {
+                document.querySelector('#pagination').classList.add('is-none-pagination');
+                return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
+                }
+                ul.innerHTML = "";
 
-            results.forEach(el => {
+                    data.results.forEach(el => {
                     el.release_date = Number.parseInt(el.release_date);
                     el.poster_path === null
                         ? (el.poster_path = no_image_found)
@@ -34,7 +33,6 @@ export const getData = function (e) {
                     document
                         .querySelector('.home-film-list')
                         .insertAdjacentHTML('afterbegin', templateCard(el));
-                    
                     fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
                         .then(data => data.json())
                         .then(data => {
@@ -49,9 +47,9 @@ export const getData = function (e) {
                                 }
                             });
                         });
-                });
-            })
-            .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."))
+                 });
+             })
+             .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
     } 
 };
 
