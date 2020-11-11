@@ -29,7 +29,7 @@ const getData = function (e) {
                     return el
                 })                
                 arr.sort((a, b) => {
-                    return a.release_date-b.release_date
+                    return a.popularity-b.popularity
                 })
                 arr.forEach(el => {
                     !el.release_date ? el.release_date = "Unknown" : el.release_date;                    
