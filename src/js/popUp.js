@@ -4,6 +4,7 @@ import 'basiclightbox/src/styles/main.scss';
 import popUpTemplate from '../templates/popUp.hbs';
 import trailerTemplate from '../templates/trailer.hbs';
 import no_image_found from '../images/no-image.jpg';
+import play_btn from '../images/play-btn.png';
 
 import '../css/popUp.css';
 
@@ -21,29 +22,35 @@ const showTrailer = async (query) => {
 }
 
 document.querySelector('.home-film-list').addEventListener('click', (event) => {
-  const id = event.target.parentNode.dataset['id']
-  showModal(id)
-    .then(data => {
-      data.poster_path === null ?
-        data.poster_path = no_image_found
-        : data.poster_path = `https://image.tmdb.org/t/p/w300${data.poster_path}`
-      data.overview === "" ?
-        data.overview = 'No description added'
-        : data.overview = data.overview
-      basicLightbox.create(`
+  if (event.target.parentNode.nodeName === "LI") {
+    const id = event.target.parentNode.dataset['id']
+    showModal(id)
+      .then(data => {
+        data.text_watched_btn = "ADD TO WATCHED";
+        data.text_queue_btn = "ADD TO QUEUE";
+        data.play_btn = play_btn;
+        data.poster_path === null ?
+          data.poster_path = no_image_found
+          : data.poster_path = `https://image.tmdb.org/t/p/w300${data.poster_path}`
+        data.overview === "" ?
+          data.overview = 'No description added'
+          : data.overview = data.overview
+        basicLightbox.create(`
     ${popUpTemplate(data)}
   `).show();
-
-    document.querySelector('.pop-up-btn-trailer').addEventListener('click', () => {
-    showTrailer(data.original_title)
-      .then(data =>
-        {basicLightbox.create(`
-    ${trailerTemplate(data.items[0])}
-  `).show();
-  })
-})
-    })
   
+        document.querySelector('.play-trailer-btn').addEventListener('click', () => {
+          showTrailer(data.original_title)
+            .then(data => {
+              console.log(data)
+              basicLightbox.create(`
+    ${trailerTemplate(data.items[0])}
+  `).show();       
+            })
+        })
+        document.querySelector('.close-btn').addEventListener('click', () => document.querySelector('.basicLightbox').remove())
+      })
+  }
 })
 
 window.addEventListener('keydown', (event) => {

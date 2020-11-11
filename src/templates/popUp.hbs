@@ -1,5 +1,12 @@
 <div class="pop-up container">
-  <img src="{{poster_path}}" alt="" class="pop-up-img">
+  <div>
+    <img src="{{poster_path}}" alt="" class="pop-up-img">
+    <button type="submit" class="play-trailer-btn">
+      <img src="{{play_btn}}" class="play-trailer-btn-icon" width="24" height="24">
+      </img>
+      Watch the trailer
+    </button>
+  </div>
   <div class="pop-up-content">
     <h2 class="pop-up-title">{{title}}</h2>
     <div class="pop-up-info">
@@ -34,9 +41,9 @@
       <p class="pop-up-description-text">{{overview}}</p>
     </div>
     <div class="pop-up-buttons">
-      <button type="button" class="pop-up-btn-watched">ADD TO WATCHED</button>
-      <button type="button" class="pop-up-btn-queue">ADD TO QUEUE</button>
-      <button type="button" class="pop-up-btn-trailer">WATCH TRAILER</button>
+      <button type="button" class="pop-up-btn-watched">{{text_watched_btn}}</button>
+      <button type="button" class="pop-up-btn-queue">{{text_queue_btn}}</button>
     </div>
   </div>
-  </>
+  <button type="button" class="close-btn" data-action="close-pop-up"></button>
+</div>
