@@ -36,9 +36,9 @@ export default function library() {
             if (event.target.nodeName !== "BUTTON") {
               return
             } else {
-            watched.classList.toggle("btn-active")
+                watched.classList.toggle("btn-active")
                 queue.classList.toggle("btn-active")
-                
+                ul.classList.toggle("watched")
             };   
         };
         containerButton.addEventListener("click", buttonActive);
@@ -49,7 +49,7 @@ export default function library() {
            ul.innerHTML = ""
            const array = JSON.parse(localStorage.getItem('Watched'));
           
-           if (array !== null) {
+           if (array !== null && array.length !==0) {
                array.forEach(el => {
                         el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
@@ -76,7 +76,7 @@ export default function library() {
         ul.innerHTML = ""
          
         const array = JSON.parse(localStorage.getItem('Queue'));
-        if (array !== null) {
+        if (array !== null && array.length !==0) {
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))
