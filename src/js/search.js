@@ -11,19 +11,21 @@ const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
 
-const getData = function (e) {
-    e.preventDefault()    
+export const getData = function (e) {
+
+    e.preventDefault();  
     let eventTarget;
     e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
     if (eventTarget.value.length >=1) {
         error.innerHTML = "";
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}`)
         .then(data => data.json())
-        .then(({ results }) => {
+        .then(({results}) => {
             if (results.length <= 0) {
             return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
             }
             ul.innerHTML = "";
+
             results.forEach(el => {
                     el.release_date = Number.parseInt(el.release_date);
                     el.poster_path === null

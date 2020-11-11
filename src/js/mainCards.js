@@ -1,23 +1,27 @@
 import cards from '../templates/cardGallery.hbs';
 import no_image_found from '../images/no-image.jpg';
 import '../css/card.css';
+import { changePagination } from './pagination.js';
 
 const key = '401d61f37c17d956a98039a1a0734109';
 
-const findPopular = async function () {
+export const findPopular = async function (page) {
   return await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=1`,
+    `https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`,
   )
     .then(data => data.json())
-    .then(({ results }) => {
-      results.forEach(el => {
+    .then(data => {
+      if (data.results.length === 0) document.querySelector('#pagination').classList.add('is-none-pagination');
+      changePagination(data);
+
+      data.results.forEach(el => {
         el.release_date = Number.parseInt(el.release_date);
         el.poster_path === null
           ? (el.poster_path = no_image_found)
           : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
         document
           .querySelector('.home-film-list')
-          .insertAdjacentHTML('afterbegin', cards(el));
+          .insertAdjacentHTML('beforeend', cards(el));
         fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
           .then(data => data.json())
           .then(data => {
