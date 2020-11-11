@@ -10,6 +10,9 @@ const findPopular = async function () {
   )
     .then(data => data.json())
     .then(({ results }) => {
+      results.sort((a, b) => {
+        return a.popularity - b.popularity;
+      })
       results.forEach(el => {
         el.release_date = Number.parseInt(el.release_date);
         el.poster_path === null
@@ -18,11 +21,15 @@ const findPopular = async function () {
         document
           .querySelector('.home-film-list')
           .insertAdjacentHTML('afterbegin', cards(el));
-        fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
+          fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
           .then(data => data.json())
-          .then(data => {
-            document.querySelectorAll('.gallery-item-genre').forEach(el => {
+            .then(data => {
+            
+              document.querySelectorAll('.gallery-item-genre').forEach(el => {
+             
               if (el.dataset.id == data.id) {
+                
+
                 data.genres.forEach(i => {
                   el.insertAdjacentHTML(
                     'afterbegin',

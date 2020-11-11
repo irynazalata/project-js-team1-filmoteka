@@ -1,5 +1,5 @@
 .library-container {
-  padding-top: 41px;
+  padding-top: 45px;
   padding-bottom: 65px;
 }
 .library-btn {
@@ -51,6 +51,10 @@
     width: 136px;
     height: 44px;
   }
+  .library-container {
+    padding-top: 41px;
+    padding-bottom: 65px;
+  }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
   screen and (min-resolution: 192dpi) and (min-width: 768px),
@@ -77,4 +81,9 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/desktop/Library_2x.jpg');
   }
+}
+.no-films {
+  margin: 0 auto;
+  font-size: 25px;
+  margin-bottom: 50vh;
 }
