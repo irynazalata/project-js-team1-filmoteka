@@ -1,4 +1,5 @@
 import cards from '../templates/cardGallery.hbs';
+import '../css/card.css';
 export default function library() {    
     const searchBox = document.querySelector(".search-box");
     const errorP = document.querySelector(".error");
@@ -49,12 +50,26 @@ export default function library() {
            const array = JSON.parse(localStorage.getItem('Watched'));
           
            if (array !== null) {
-               
-               array.forEach(el => (
+               array.forEach(el => {
+                        el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
-            
-               ))
-           }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET :*(</p>')}
+
+                   array.forEach(e => {
+                       if (el.id==e.id) {
+                           e.genres.forEach(i => {
+                       
+                               document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                   'afterbegin',
+                                   `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                               );
+                           
+                           })
+                       }
+                   })
+
+               })
+
+           }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>')}
 
     };
        const queueFilms = function () {
@@ -62,10 +77,24 @@ export default function library() {
          
         const array = JSON.parse(localStorage.getItem('Queue'));
         if (array !== null) {
-            array.forEach(el => (
+            array.forEach(el => {
+                 el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))
-            ))
-        }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET :*(</p>')}
+
+                array.forEach(e => {
+                    if (el.id == e.id) {
+                        e.genres.forEach(i => {
+                       
+                            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                'afterbegin',
+                                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                            );
+                           
+                        })
+                    }
+                })
+            })
+        }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>')}
     };
 
     watched.addEventListener("click", watchedFilms);
