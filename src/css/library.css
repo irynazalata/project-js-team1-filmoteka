@@ -78,3 +78,8 @@
       url('../images/desktop/Library_2x.jpg');
   }
 }
+.no-films {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 50vh;
+}
