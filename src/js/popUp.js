@@ -4,7 +4,9 @@ import 'basiclightbox/src/styles/main.scss';
 import cards from '../templates/cardGallery.hbs';
 
 import popUpTemplate from '../templates/popUp.hbs';
+import trailerTemplate from '../templates/trailer.hbs';
 import no_image_found from '../images/no-image.jpg';
+import play_btn from '../images/play-btn.png';
 
 import '../css/popUp.css';
 
@@ -17,21 +19,31 @@ const showModal = async (id) => {
   return data
 }
 
+const showTrailer = async (query) => {
+  const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?q=${query}%20official%20trailer&key=AIzaSyDigPVGWw58z95GRMpQLI5t-NGiAHpD3r0`);
+  const data = response.json();
+  return data
+}
+
 document.querySelector('.home-film-list').addEventListener('click', (event) => {
-  const id = event.target.parentNode.dataset['id']
-  showModal(id)
-    .then(data => {
-      objPopUp = data
-      data.poster_path === null ?
-        data.poster_path = no_image_found
-        : data.poster_path = `https://image.tmdb.org/t/p/w300${data.poster_path}`
-      data.overview === "" ?
-        data.overview = 'No description added'
-        : data.overview = data.overview
-      basicLightbox.create(`
+  if (event.target.parentNode.nodeName === "LI") {
+    const id = event.target.parentNode.dataset['id']
+    showModal(id)
+      .then(data => {
+        objPopUp = data
+        data.text_watched_btn = "ADD TO WATCHED";
+        data.text_queue_btn = "ADD TO QUEUE";
+        data.play_btn = play_btn;
+        data.poster_path === null ?
+          data.poster_path = no_image_found
+          : data.poster_path = `https://image.tmdb.org/t/p/w300${data.poster_path}`
+        data.overview === "" ?
+          data.overview = 'No description added'
+          : data.overview = data.overview
+        basicLightbox.create(`
     ${popUpTemplate(data)}
   `).show();
-
+      
       const addWatched = document.querySelector('.pop-up-btn-watched')
       const addQueue = document.querySelector('.pop-up-btn-queue')
 
@@ -84,24 +96,31 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           localStorage.setItem('Queue', JSON.stringify(arrQueue))
           event.target.textContent = 'ADD TO QUEUE'
           queueFilms()
-        }
-        
-          
+        } 
       }
 
       addWatched.addEventListener('click', getArrWatched)
       addQueue.addEventListener('click', getArrQueue)
+  
+        document.querySelector('.play-trailer-btn').addEventListener('click', () => {
+          showTrailer(data.original_title)
+            .then(data => {
+              console.log(data)
+              basicLightbox.create(`
+    ${trailerTemplate(data.items[0])}
+  `).show();       
+            })
+        })
+        document.querySelector('.close-btn').addEventListener('click', () => document.querySelector('.basicLightbox').remove())
+      })
+  }
+})
 
-})
-})
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     document.querySelector('.basicLightbox').remove()
   }
 })
-
-
-
 
 const ul = document.querySelector(".film-list")
 
