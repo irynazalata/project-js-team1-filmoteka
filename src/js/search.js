@@ -12,7 +12,8 @@ const headerSvg = document.querySelector(".icon-modal")
 
 
 const getData = function (e) {
-    e.preventDefault()    
+
+    e.preventDefault();  
     let eventTarget;
     e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
     if (eventTarget.value.length >=1) {
@@ -23,7 +24,7 @@ const getData = function (e) {
             if (results.length <= 0) {
             return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
             }   ul.innerHTML = "";
-                console.log(results);
+ 
                 const arr = results.map(el => {
                     el.release_date = new Date(el.release_date).getFullYear()
                     return el

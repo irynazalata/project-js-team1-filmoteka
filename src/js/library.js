@@ -12,6 +12,7 @@ export default function library() {
 
 
     const libraryOpen = function () {
+        
             container.removeChild(searchBox);
         container.removeChild(errorP);
         changeBgr.classList.replace("header", "library");
@@ -48,8 +49,10 @@ export default function library() {
        function watchedFilms  () {
            ul.innerHTML = ""
            const array = JSON.parse(localStorage.getItem('Watched'));
+           document.querySelector('#pagination').classList.add('is-none-pagination');
           
            if (array !== null) {
+            document.querySelector('#pagination').classList.remove('is-none-pagination');
                array.forEach(el => {
                         el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
@@ -74,9 +77,11 @@ export default function library() {
     };
        const queueFilms = function () {
         ul.innerHTML = ""
+        document.querySelector('#pagination').classList.add('is-none-pagination');
          
         const array = JSON.parse(localStorage.getItem('Queue'));
         if (array !== null) {
+            document.querySelector('#pagination').classList.remove('is-none-pagination');
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))
