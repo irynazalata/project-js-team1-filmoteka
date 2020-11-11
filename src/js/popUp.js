@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/src/styles/main.scss';
 
+import cards from '../templates/cardGallery.hbs';
+
 import popUpTemplate from '../templates/popUp.hbs';
 import trailerTemplate from '../templates/trailer.hbs';
 import no_image_found from '../images/no-image.jpg';
@@ -58,16 +60,20 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
              arrWatched.push(objPopUp);
             }
             localStorage.setItem('Watched', JSON.stringify(arrWatched))
-            event.target.textContent = "DELETE FROM WATCHED"
+          event.target.textContent = "DELETE FROM WATCHED"
+          watchedFilms()
         }
         else if (event.target.textContent === "DELETE FROM WATCHED") {
+         
           isUnique = arrWatched.find(el => el.id == id)
           if (isUnique !== undefined) {
             const index = arrWatched.indexOf(isUnique)
             arrWatched.splice(index, 1)
+            
           }
           localStorage.setItem('Watched', JSON.stringify(arrWatched))
           event.target.textContent = 'ADD TO WATCHED'
+          watchedFilms()
         }
       }
 
@@ -79,6 +85,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           }
           localStorage.setItem('Queue', JSON.stringify(arrQueue))
           event.target.textContent = "DELETE FROM QUEUE"
+          queueFilms()
         }
         else if (event.target.textContent === "DELETE FROM QUEUE") {
           isUnique = arrQueue.find(el => el.id == id)
@@ -87,7 +94,9 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
             arrQueue.splice(index, 1)
           }
           localStorage.setItem('Queue', JSON.stringify(arrQueue))
-          event.target.textContent = 'ADD TO QUEUE'}
+          event.target.textContent = 'ADD TO QUEUE'
+          queueFilms()
+        } 
       }
 
       addWatched.addEventListener('click', getArrWatched)
@@ -113,3 +122,52 @@ window.addEventListener('keydown', (event) => {
   }
 })
 
+const ul = document.querySelector(".film-list")
+
+function watchedFilms() {
+ if (ul.classList.contains("library-film-list") && ul.classList.contains("watched")) {
+  ul.innerHTML = ""
+  const array = JSON.parse(localStorage.getItem('Watched'));
+  if (array !== null && array.length !== 0) {
+    array.forEach(el => {
+      el.release_date = new Date(el.release_date).getFullYear();
+      ul.insertAdjacentHTML('afterbegin', cards(el))
+       array.forEach(e => {
+        if (el.id == e.id) {
+          e.genres.forEach(i => {            
+            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+              'afterbegin',
+              `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+            );
+          })
+        }
+      })
+    })
+  } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
+}
+};
+
+
+function queueFilms() {
+  
+  if (ul.classList.contains("library-film-list") && !ul.classList.contains("watched")) {
+    ul.innerHTML = ""
+    const array = JSON.parse(localStorage.getItem('Queue'));
+    if (array !== null && array.length !== 0) {
+      array.forEach(el => {
+        el.release_date = new Date(el.release_date).getFullYear();
+        ul.insertAdjacentHTML('afterbegin', cards(el))
+        array.forEach(e => {
+          if (el.id == e.id) {
+            e.genres.forEach(i => {
+              document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                'afterbegin',
+                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+              );
+            })
+          }
+        })
+      })
+    } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
+  }
+    };

@@ -37,9 +37,9 @@ export default function library() {
             if (event.target.nodeName !== "BUTTON") {
               return
             } else {
-            watched.classList.toggle("btn-active")
+                watched.classList.toggle("btn-active")
                 queue.classList.toggle("btn-active")
-                
+                ul.classList.toggle("watched")
             };   
         };
         containerButton.addEventListener("click", buttonActive);
