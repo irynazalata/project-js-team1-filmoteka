@@ -1,6 +1,9 @@
 .home-film-list {
   text-align: left;
 }
+.library-film-list {
+  text-align: left;
+}
 .gallery-list-item {
   width: 280px;
   list-style: none;
@@ -68,6 +71,10 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .library-film-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .gallery-list-item {
     width: 293px;
   }
@@ -83,6 +90,10 @@
     margin-bottom: 30px;
   }
   .home-film-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .library-film-list {
     display: flex;
     flex-wrap: wrap;
   }
