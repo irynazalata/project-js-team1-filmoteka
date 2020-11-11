@@ -11,7 +11,7 @@ const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
 
-export const getData = function (e) {
+const getData = function (e) {
 
     e.preventDefault();  
     let eventTarget;
@@ -19,18 +19,24 @@ export const getData = function (e) {
     if (eventTarget.value.length >=1) {
         error.innerHTML = "";
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}`)
-        .then(data => data.json())
-        .then(({results}) => {
+            .then(data => data.json())
+            .then(({ results }) => {
             if (results.length <= 0) {
             return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
-            }
-            ul.innerHTML = "";
-
-            results.forEach(el => {
-                    el.release_date = Number.parseInt(el.release_date);
+            }   ul.innerHTML = "";
+ 
+                const arr = results.map(el => {
+                    el.release_date = new Date(el.release_date).getFullYear()
+                    return el
+                })                
+                arr.sort((a, b) => {
+                    return a.popularity-b.popularity
+                })
+                arr.forEach(el => {
+                    !el.release_date ? el.release_date = "Unknown" : el.release_date;                    
                     el.poster_path === null
-                        ? (el.poster_path = no_image_found)
-                        : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
+                    ? (el.poster_path = no_image_found)
+                    : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
                     document
                         .querySelector('.home-film-list')
                         .insertAdjacentHTML('afterbegin', templateCard(el));

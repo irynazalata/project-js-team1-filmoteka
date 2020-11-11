@@ -230,6 +230,9 @@ img {
 .home-film-list {
   padding-bottom: 40px;
 }
+.library-film-list {
+  padding-bottom: 40px;
+}
 /*============ Footer=========== */
 .footer {
   background-color: var(--footer-bg-color);
@@ -263,6 +266,9 @@ img {
     padding-bottom: 60px;
   }
   .home-film-list {
+    padding-bottom: 50px;
+  }
+  .library-film-list {
     padding-bottom: 50px;
   }
   .copyright-box {
