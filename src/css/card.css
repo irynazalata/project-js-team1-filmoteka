@@ -18,15 +18,33 @@
   margin-bottom: 5px;
   color: var(--primary-text-color);
 }
+.gallery-item-info {
+  display: flex;
+  height: 16px;
+}
 .gallery-item-genre {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.166;
   color: var(--accent-color);
+  padding-top: 2px;
 }
 .gallery-item-genre-name:last-child .no-need-symbol {
   display: none;
 }
+.vote-average-main {
+  width: 36px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 10px;
+  padding-top: 1.5px;
+}
+
 @media screen and (max-width: 767px) {
   .gallery-list-item:not(:last-child) {
     margin-bottom: 20px;

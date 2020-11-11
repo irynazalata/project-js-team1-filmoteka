@@ -10,6 +10,9 @@ const findPopular = async function () {
   )
     .then(data => data.json())
     .then(({ results }) => {
+      results.sort((a, b) => {
+        return a.popularity - b.popularity;
+      })
       results.forEach(el => {
         el.release_date = Number.parseInt(el.release_date);
         el.poster_path === null
