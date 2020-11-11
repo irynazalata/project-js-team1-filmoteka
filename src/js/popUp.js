@@ -28,8 +28,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         : data.overview = data.overview
       basicLightbox.create(`
     ${popUpTemplate(data)}
-  `
-      ).show();
+  `).show();
 
       const addWatched = document.querySelector('.pop-up-btn-watched')
       const addQueue = document.querySelector('.pop-up-btn-queue')
@@ -46,7 +45,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         isUnique ? arrWatched.push(objPopUp) : '';
         localStorage.setItem('Watched', JSON.stringify(arrWatched))
         
-        event.target.textContent = "ADDED TO WATCHED"
+        event.target.textContent = "DELETE FROM WATCHED"
 
       }
 
@@ -59,7 +58,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         isUnique ? arrQueue.push(objPopUp) : '';
         localStorage.setItem('Queue', JSON.stringify(arrQueue))
 
-        event.target.textContent = "ADDED TO QUEUE"
+        event.target.textContent = "DELETE FROM QUEUE"
       }
 
       addWatched.addEventListener('click', getArrWatched)
