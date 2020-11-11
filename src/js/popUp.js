@@ -35,30 +35,47 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
 
       let arrQueue = JSON.parse(localStorage.getItem('Queue')) || [];
       let arrWatched = JSON.parse(localStorage.getItem('Watched')) || [];
-      
+
+      let isUnique;
+
       const getArrWatched = function (event) {
-        
-        let isUnique = true;
 
-        arrWatched.forEach(el => {isUnique = el.id == id ? false : true})
-           
-        isUnique ? arrWatched.push(objPopUp) : '';
-        localStorage.setItem('Watched', JSON.stringify(arrWatched))
-        
-        event.target.textContent = "DELETE FROM WATCHED"
-
+        if (event.target.textContent === 'ADD TO WATCHED') {
+          isUnique = arrWatched.find(el => el.id == id)
+          if (isUnique === undefined) {
+             arrWatched.push(objPopUp);
+            }
+            localStorage.setItem('Watched', JSON.stringify(arrWatched))
+            event.target.textContent = "DELETE FROM WATCHED"
+        }
+        else if (event.target.textContent === "DELETE FROM WATCHED") {
+          isUnique = arrWatched.find(el => el.id == id)
+          if (isUnique !== undefined) {
+            const index = arrWatched.indexOf(isUnique)
+            arrWatched.splice(index, 1)
+          }
+          localStorage.setItem('Watched', JSON.stringify(arrWatched))
+          event.target.textContent = 'ADD TO WATCHED'
+        }
       }
 
       const getArrQueue = function (event) {
-
-        let isUnique = true;
-        
-          arrQueue.forEach(el => {isUnique = el.id == id ? false : true})
-          
-        isUnique ? arrQueue.push(objPopUp) : '';
-        localStorage.setItem('Queue', JSON.stringify(arrQueue))
-
-        event.target.textContent = "DELETE FROM QUEUE"
+        if (event.target.textContent === 'ADD TO QUEUE') {
+          isUnique = arrQueue.find(el => el.id == id)
+          if (isUnique === undefined) {
+            arrQueue.push(objPopUp);
+          }
+          localStorage.setItem('Queue', JSON.stringify(arrQueue))
+          event.target.textContent = "DELETE FROM QUEUE"
+        }
+        else if (event.target.textContent === "DELETE FROM QUEUE") {
+          isUnique = arrQueue.find(el => el.id == id)
+          if (isUnique !== undefined) {
+            const index = arrQueue.indexOf(isUnique)
+            arrQueue.splice(index, 1)
+          }
+          localStorage.setItem('Queue', JSON.stringify(arrQueue))
+          event.target.textContent = 'ADD TO QUEUE'}
       }
 
       addWatched.addEventListener('click', getArrWatched)
