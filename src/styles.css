@@ -45,6 +45,10 @@ img {
   object-fit: cover;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
   width: 320px;
   padding: 0 20px;
@@ -282,4 +286,35 @@ img {
   .copyright-box {
     width: 1024px;
   }
+}
+
+.filter {
+  margin-bottom: 30px;
+}
+.filter-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.filter-categories {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-categories-item {
+  max-height: 150px;
+  padding: 5px 20px;
+  border: solid 1px var(--accent-color);
+  overflow: auto;
+  z-index: 999;
+}
+
+.filter-categories-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.filter-categories-item-list {
+  border-top: solid 1px var(--accent-color);
+}
+.close {
+  display: none;
 }

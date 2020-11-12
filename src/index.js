@@ -1,4 +1,5 @@
 import './styles.css';
+import './js/filter.js';
 import './js/mainCards.js';
 import "./js/search.js"
 import "./css/library.css";
