@@ -15,7 +15,7 @@ export const findPopular = async function (page) {
       if (data.results.length === 0) document.querySelector('#pagination').classList.add('is-none-pagination');
       changePagination(data);
       data.results.sort((a, b) => {
-        return a.popularity - b.popularity;
+        return b.popularity - a.popularity;
       })
       data.results.forEach(el => {
         el.release_date = Number.parseInt(el.release_date);
