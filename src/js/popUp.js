@@ -35,16 +35,18 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         document.body.classList.add('modal-open');
         objPopUp = data
         if (JSON.parse(localStorage.getItem('Queue')) === null || JSON.parse(localStorage.getItem('Queue')).length === 0) { data.text_queue_btn = "ADD TO " }
-         else if (JSON.parse(localStorage.getItem('Queue')) !== null) {
+        else if (JSON.parse(localStorage.getItem('Queue')) !== null) {
+          data.text_queue_btn = "ADD TO ";
           JSON.parse(localStorage.getItem('Queue')).forEach(el => {
-            el.id == id ? data.text_queue_btn = "DELETE FROM " : data.text_queue_btn = "ADD TO ";
+            el.id == id ? data.text_queue_btn = "DELETE FROM " : "";
             }
           )
         }
         if (JSON.parse(localStorage.getItem('Watched')) === null || JSON.parse(localStorage.getItem('Watched')).length === 0) { data.text_watched_btn = "ADD TO " }
         else if (JSON.parse(localStorage.getItem('Watched')) !== null) {
+          data.text_watched_btn = "ADD TO "
           JSON.parse(localStorage.getItem('Watched')).forEach(el => {
-            el.id == id ? data.text_watched_btn = "DELETE FROM " : data.text_watched_btn = "ADD TO ";
+            el.id == id ? data.text_watched_btn = "DELETE FROM " : "";
             }
           )
         }
