@@ -11,7 +11,7 @@ const popularBtn = document.querySelector('#popular');
 const topRatedBtn = document.querySelector('#top-rated');
 const upComingBtn = document.querySelector('#upcoming');
 
-const render = function (data) {
+const filterRender = function (data) {
   data.results.forEach(el => {
     el.release_date = Number.parseInt(el.release_date);
     el.poster_path === null
@@ -45,7 +45,7 @@ const popular = function (page) {
       data.results.sort((a, b) => {
         return b.popularity - a.popularity;
       });
-      render(data);
+      filterRender(data);
     });
 };
 const topRated = function (page) {
@@ -58,7 +58,7 @@ const topRated = function (page) {
       data.results.sort((a, b) => {
         return b.vote_average - a.vote_average;
       });
-      render(data);
+      filterRender(data);
     });
 };
 const upComing = function (page) {
@@ -68,7 +68,7 @@ const upComing = function (page) {
   )
     .then(data => data.json())
     .then(data => {
-      render(data);
+      filterRender(data);
     });
 };
 
