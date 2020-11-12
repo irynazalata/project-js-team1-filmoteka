@@ -13,11 +13,13 @@ const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
-const render = function (page) {
+export const render = function (page) {
               spinnerOn();
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
         .then(data => data.json())
         .then(data => {
+  console.log(data);
+
             if (data.results.length <= 0) {
                 return error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name.");
             } ul.innerHTML = "";
@@ -66,15 +68,6 @@ const getData = function (e) {
     }
 };
 
-};
-const getData = function (e) {
-    e.preventDefault();  
-    let eventTarget;
-    e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
-    if (eventTarget.value.length >=1) {
-        error.innerHTML = "";
-        render();
-    }
-}
+
 form.addEventListener("submit",getData)
 headerSvg.addEventListener("click",getData)

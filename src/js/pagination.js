@@ -48,7 +48,7 @@ export const searchPagination = new Pagination('search-pagination', {
   // Items per page
   itemsPerPage: 20,
   // Visible pages
-  visiblePages: 5,
+  visiblePages: 2,
   // Current page
   page: 1,
   // center number
@@ -68,6 +68,9 @@ searchPagination.on('afterMove', function(evt) {
   export function changeSearchPagination (data) {
     document.querySelector('#pagination').classList.add('is-none-pagination');
     document.querySelector('#search-pagination').classList.remove('is-none-pagination');
-    mainPagination.setItemsPerPage(data.results.length=18);
-    mainPagination.setTotalItems(data.total_results - data.total_pages*2);
+    searchPagination.setItemsPerPage(data.results.length=18);
+    searchPagination.setTotalItems(data.total_results - data.total_pages*2);
+    if (data.total_results<=18) {
+      document.querySelector('#search-pagination').classList.add('is-none-pagination');
+    }
   }
