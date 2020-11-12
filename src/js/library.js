@@ -52,7 +52,6 @@ export default function library() {
            document.querySelector('#pagination').classList.add('is-none-pagination');
           
            if (array !== null && array.length !== 0) {
-            document.querySelector('#pagination').classList.remove('is-none-pagination');
                array.forEach(el => {
                         el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
@@ -80,8 +79,8 @@ export default function library() {
         document.querySelector('#pagination').classList.add('is-none-pagination');
          
         const array = JSON.parse(localStorage.getItem('Queue'));
+
         if (array !== null && array.length !== 0) {
-            document.querySelector('#pagination').classList.remove('is-none-pagination');
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))

@@ -12,7 +12,6 @@ const headerSvg = document.querySelector(".icon-modal")
 
 
 const getData = function (e) {
-
     e.preventDefault();  
     let eventTarget;
     e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
@@ -40,7 +39,6 @@ const getData = function (e) {
                     document
                         .querySelector('.home-film-list')
                         .insertAdjacentHTML('afterbegin', templateCard(el));
-                    
                     fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
                         .then(data => data.json())
                         .then(data => {
@@ -55,9 +53,9 @@ const getData = function (e) {
                                 }
                             });
                         });
-                });
-            })
-            .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."))
+                 });
+             })
+             .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
     } 
 };
 
