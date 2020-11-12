@@ -7,12 +7,11 @@ import {render} from './search.js'
 function scroll() {
   setTimeout(() => {
     window.scrollTo({
-      top: 0,
+      top: 230,
       behavior: 'smooth',
     });
   }, 500);
 }
-scroll()
 
 export function changePagination (data) {
   mainPagination.setItemsPerPage(data.results.length=18);

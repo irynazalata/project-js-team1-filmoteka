@@ -144,11 +144,6 @@
   height: 60vh;
 }
 
-@media screen and (max-width: 1023px) {
-  .pop-up {
-    overflow-y: scroll;
-  }
-}
 @media screen and (min-width: 768px) {
   .pop-up {
     display: flex;
@@ -199,6 +194,7 @@
     padding-top: 60px;
     padding-bottom: 60px;
     width: 80vw;
+    overflow-y: auto;
   }
   .pop-up-img {
     width: auto;
@@ -212,6 +208,9 @@
   }
   .original-title-name {
     width: 270px;
+  }
+  .pop-up-description-text {
+    overflow-y: auto;
   }
   .pop-up-buttons button {
     width: 150px;

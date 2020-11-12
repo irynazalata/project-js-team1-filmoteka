@@ -1,89 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <title>Filmoteka</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
-     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAACJAAAAAAAAAAAAAAAAAAAAAAAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/QAAAAEAAAAAAAAAAAAAAAAAAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP0AAAABAAAAAAAAAAAAAAAAAAAA+wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD9AAAAAQAAAAAAAABDAAAA3gAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/gAAAKgAAACrAAAA5wAAAP0AAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP4AAACqAAAArgAAAOkAAAD9AAAA4QAAAP0AAAD8AAAA/QAAAP0AAAD9AAAA/QAAAP0AAAD8AAAA/QAAAP0AAADkAAAAAAAAAAAAAABEAAAA4AAAABgAAAC1AAAA+wAAANwAAABJAAAAAAAAADkAAADHAAAA/AAAAOMAAABwAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACzAAAA2wAAAFwAAAClAAAA9QAAAD4AAAD0AAAAtwAAAFgAAACGAAAA+wAAAHAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAAGMAAAAAAAAACQAAAP4AAADdAAAA2QAAAAUAAAAAAAAAAAAAAIgAAADiAAAAAAAAAAAAAAAAAAAAAAAAANEAAACzAAAAFAAAAGQAAAD+AAAA0gAAALQAAAAAAAAAAAAAAAAAAABdAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAA9AAAA7QAAAP8AAAD9AAAAiAAAAGsAAADzAAAAKwAAAAAAAAAIAAAAvwAAAMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABFAAAAJgAAAAAAAAAHAAAAwgAAAPUAAAC8AAAA4gAAAO8AAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAABjAAAAmQAAAH8AAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAHAAAABwAAAAYAAAAEAAAAAAAAAAAAAAAEAAAEDwAAAA8AACDHAAABxwAAAI8AAIAPAAD8HwAA//8AAA==" rel="icon" type="image/x-icon">
-    </head>
-  <body>
-    <!--Header-->
-    <header class="header">
-      <div class="header-container container">
-        <div class="logo-container">
-          <a href="./index.html" class="link-logo link">
-            <svg class="icon-logo" width="24" height="24">
-              <use href="./images/sprite.svg#icon-logo"></use>
-            </svg>
-            <span class="text-logo"> Filmoteka</span></a>
-          <nav class="navigation">
-            <ul class="header-list">
-              <li class="header-list-item">
-                <a href="./index.html" class="link-header current " id="home">HOME</a>
-              </li>
-              <li class="header-list-item link">
-                <button class="link-library" id="my-library">MY LIBRARY</button>
-                </li>
-            </ul>
-          </nav>
-        </div>
-         <form class="search-box" action="">
-          <input type="text" id="search" class="search-input" placeholder="Search the film">
-          <svg class="icon-modal" width="12" height="12">
-            <use href="./images/sprite.svg#icon-magnifier"></use>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="" />
+  <title>Filmoteka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAACJAAAAAAAAAAAAAAAAAAAAAAAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/QAAAAEAAAAAAAAAAAAAAAAAAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP0AAAABAAAAAAAAAAAAAAAAAAAA+wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD9AAAAAQAAAAAAAABDAAAA3gAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/gAAAKgAAACrAAAA5wAAAP0AAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP4AAACqAAAArgAAAOkAAAD9AAAA4QAAAP0AAAD8AAAA/QAAAP0AAAD9AAAA/QAAAP0AAAD8AAAA/QAAAP0AAADkAAAAAAAAAAAAAABEAAAA4AAAABgAAAC1AAAA+wAAANwAAABJAAAAAAAAADkAAADHAAAA/AAAAOMAAABwAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACzAAAA2wAAAFwAAAClAAAA9QAAAD4AAAD0AAAAtwAAAFgAAACGAAAA+wAAAHAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAAGMAAAAAAAAACQAAAP4AAADdAAAA2QAAAAUAAAAAAAAAAAAAAIgAAADiAAAAAAAAAAAAAAAAAAAAAAAAANEAAACzAAAAFAAAAGQAAAD+AAAA0gAAALQAAAAAAAAAAAAAAAAAAABdAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAA9AAAA7QAAAP8AAAD9AAAAiAAAAGsAAADzAAAAKwAAAAAAAAAIAAAAvwAAAMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABFAAAAJgAAAAAAAAAHAAAAwgAAAPUAAAC8AAAA4gAAAO8AAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAABjAAAAmQAAAH8AAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAHAAAABwAAAAYAAAAEAAAAAAAAAAAAAAAEAAAEDwAAAA8AACDHAAABxwAAAI8AAIAPAAD8HwAA//8AAA=="
+    rel="icon" type="image/x-icon">
+</head>
+
+<body>
+  <!--Header-->
+  <header class="header" style="background-color: black; height: 230px">
+    <div class="header-container container">
+      <div class="logo-container" style="display: flex; justify-content: space-between; align-items: baseline">
+        <a href="./index.html" class="link-logo link">
+          <svg class="icon-logo" width="24" height="24">
+            <use href="./images/sprite.svg#icon-logo"></use>
           </svg>
-        </form>
-        <p class="error"></p>
+          <span class="text-logo"
+            style="margin-left: 12px;font-weight: 500;font-size: 30px;text-decoration: none; color: white">
+            Filmoteka</span></a>
+        <nav class="navigation">
+          <ul class="header-list" style="display: flex; list-style: none">
+            <li class="header-list-item">
+              <a href="./index.html" class="link-header current " id="home" style="color: white">HOME</a>
+            </li>
+            <li class="header-list-item link">
+              <button class="link-library" id="my-library"
+                style="color: var(--primary-white-color);background-color: transparent; border: 0; display: block; color: white">MY
+                LIBRARY</button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </header>
-    <main>
-      <section class="main">
-        <div class="container">
-          <ul class="filter list">
-            <!-- <li class="filter-item">
+      <form class="search-box" action="" style="text-align: center">
+        <input type="text" id="search" class="search-input" placeholder="Search the film"
+          style="background: transparent; border: none; border-bottom: 0.5px solid #ffffff; outline: none">
+        <svg class="icon-modal" width="12" height="12">
+          <use href="./images/sprite.svg#icon-magnifier"></use>
+        </svg>
+      </form>
+      <p class="error"></p>
+    </div>
+  </header>
+  <main>
+    <section class="main">
+      <div class="container">
+        <ul class="filter list" style="display: flex;justify-content: center; list-style: none">
+          <!-- <li class="filter-item">
               <button type="button" class="filter-button">All</button>
             </li> -->
-            <li class="filter-item">
-              <button type="button" class="filter-button active-btn">Popular</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Top Rated</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Upcoming</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Latest</button>
-            </li>
-          </ul>
-          <h2 class="visually-hidden">gallery</h2>
-    <div id="spinner" class="">
-      <div class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
-      </div>
-    </div>
-          <ul class="film-list home-film-list watched">
-            <!-- li в ul вставляються динамічно  -->
-            <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
-          </ul>
-         <div id="pagination" class="tui-pagination"></div>
-         <div id="search-pagination" class="tui-pagination specificity is-none-pagination"></div>
+          <li class="filter-item">
+            <button type="button" class="filter-button active-btn">Popular</button>
+          </li>
+          <li class="filter-item">
+            <button type="button" class="filter-button">Top Rated</button>
+          </li>
+          <li class="filter-item">
+            <button type="button" class="filter-button">Upcoming</button>
+          </li>
+          <li class="filter-item">
+            <button type="button" class="filter-button">Latest</button>
+          </li>
+        </ul>
+        <h2 class="visually-hidden" style="text-align: center">Gallery</h2>
+        <div id="spinner" class="">
+          <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
         </div>
+        <ul class="film-list home-film-list watched">
+          <!-- li в ul вставляються динамічно  -->
+          <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
+        </ul>
+        <div id="pagination" class="tui-pagination"></div>
+        <div id="search-pagination" class="tui-pagination specificity is-none-pagination"></div>
       </div>
 
     </section>
