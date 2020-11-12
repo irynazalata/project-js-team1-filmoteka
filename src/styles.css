@@ -45,6 +45,10 @@ img {
   object-fit: cover;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
   width: 320px;
   padding: 0 20px;
@@ -281,5 +285,68 @@ img {
 @media screen and (min-width: 1024px) {
   .copyright-box {
     width: 1024px;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-item:not(:last-child) {
+  margin-right: 5px;
+}
+
+.filter-button {
+  outline: none;
+  width: 60px;
+  height: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.34;
+  border-radius: 5px;
+  color: var(--primary-text-color);
+  background-color: var(--primary-white-color);
+  border: solid 1px var(--primary-text-color);
+}
+
+.filter-button:hover {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border: none;
+}
+
+.active-btn {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .filter {
+    margin-bottom: 40px;
+  }
+  .filter-button {
+    width: 95px;
+    height: 40px;
+    font-size: 14px;
+  }
+  .filter-item:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .filter {
+    margin-bottom: 60px;
+  }
+  .filter-button {
+    width: 110px;
+    font-size: 16px;
   }
 }
