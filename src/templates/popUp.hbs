@@ -3,9 +3,11 @@
     <img src="{{poster_path}}" alt="" class="pop-up-img">
     <button type="submit" class="play-trailer-btn">
       <img src="{{play_btn}}" class="play-trailer-btn-icon" width="24" height="24">
-      </img>
-      Watch the trailer
-    </button>
+      </img> Watch the trailer </button>
+    <a href="tg://msg_url?url=MOVIE TITLE: {{title}}. GENRES: {{#each genres}}{{this.name}}/ {{/each}} RELEASE: {{release_date}}. 
+More information can be found on our website: www.google.com, PICTURE: {{poster_path}} " class="anchorShare">
+      <img src="{{telegram}}" class="anchorShare-icon" width="15" height="15">
+      </img>share in telegram </a>
   </div>
   <div class="pop-up-content">
     <h2 class="pop-up-title">{{title}}</h2>
@@ -27,12 +29,8 @@
         </li>
         <li class="pop-up-info-list-item">
           <p class="pop-up-info-list-title">Genre</p>
-          <ul class="genre-name">
-            {{#each genres}}
-            <li class="pop-up-info-text">{{this.name}}<p> / </p>
-            </li>
-            {{/each}}
-          </ul>
+          <ul class="genre-name"> {{#each genres}} <li class="pop-up-info-text">{{this.name}}<p> / </p>
+            </li> {{/each}} </ul>
         </li>
       </ul>
     </div>

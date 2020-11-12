@@ -7,6 +7,7 @@ import popUpTemplate from '../templates/popUp.hbs';
 import trailerTemplate from '../templates/trailer.hbs';
 import no_image_found from '../images/no-image.jpg';
 import play_btn from '../images/play-btn.png';
+import telegram from '../images/telegram.png';
 
 import '../css/popUp.css';
 import { locale } from 'core-js';
@@ -45,7 +46,9 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
             el.id == id ? data.text_watched_btn = "DELETE FROM " : data.text_watched_btn = "ADD TO ";
             }
           )
-    }
+        }
+        data.release_date = Number.parseInt(data.release_date);
+        data.telegram = telegram;
         data.play_btn = play_btn;
         data.poster_path === null ?
           data.poster_path = no_image_found
@@ -56,7 +59,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         basicLightbox.create(`
     ${popUpTemplate(data)}
   `).show();
-      
+        
       const addWatched = document.querySelector('.pop-up-btn-watched')
       const addQueue = document.querySelector('.pop-up-btn-queue')
 
