@@ -2,6 +2,9 @@
 import templateCard from "../templates/cardGallery.hbs";
 import no_image_found from "../images/no-image.jpg";
 import '../css/card.css';
+import { spinnerOff, spinnerOn } from "./spinner";
+import { changeSearchPagination } from './pagination.js';
+
 
 const TOKEN = "401d61f37c17d956a98039a1a0734109";
 const input = document.querySelector(".search-input")
@@ -10,21 +13,17 @@ const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
-const getData = function (e) {
-    e.preventDefault();  
-    let eventTarget;
-    e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
-    if (eventTarget.value.length >=1) {
-        error.innerHTML = "";
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}`)
+export const render = function (page) {
+            spinnerOn();
+
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
             .then(data => data.json())
             .then(data => {
                 if (data.results.length <= 0) {
-                document.querySelector('#pagination').classList.add('is-none-pagination');
                 return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
                 }
                 ul.innerHTML = "";
-
+                changeSearchPagination(data);
                     data.results.forEach(el => {
                     el.release_date = Number.parseInt(el.release_date);
                     el.poster_path === null
@@ -33,7 +32,8 @@ const getData = function (e) {
                     document
                         .querySelector('.home-film-list')
                         .insertAdjacentHTML('afterbegin', templateCard(el));
-                    fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
+
+                    fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}&page=${page}`)
                         .then(data => data.json())
                         .then(data => {
                             document.querySelectorAll('.gallery-item-genre').forEach(el => {
@@ -47,12 +47,20 @@ const getData = function (e) {
                                 }
                             });
                         });
+                        spinnerOff();
                  });
              })
              .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
-    } 
+
 };
-
-
+const getData = function (e) {
+    e.preventDefault();  
+    let eventTarget;
+    e.currentTarget.nodeName === "svg"  ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;    
+    if (eventTarget.value.length >=1) {
+        error.innerHTML = "";
+        render();
+    }
+}
 form.addEventListener("submit",getData)
 headerSvg.addEventListener("click",getData)
