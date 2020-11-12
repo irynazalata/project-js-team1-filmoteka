@@ -7,7 +7,7 @@ import {render} from './search.js'
 function scroll() {
   setTimeout(() => {
     window.scrollTo({
-      top: 230,
+      top: 280,
       behavior: 'smooth',
     });
   }, 500);
