@@ -9,3 +9,5 @@ import './js/popUp.js';
 import './js/backToTop.js';
 import './js/filter.js';
 library();
+import "./js/dayNight.js"
+import "./css/dayNight.css"

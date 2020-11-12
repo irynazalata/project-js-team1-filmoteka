@@ -118,6 +118,7 @@ ul {
 }
 /*============ Finish background =============*/
 .header-container {
+  position: relative;
   padding-top: 46px;
   padding-bottom: 43px;
 }
@@ -326,7 +327,11 @@ ul {
   background-color: var(--accent-color);
   border: none;
 }
-
+.lamp {
+  position: absolute;
+  top: 85px;
+  right: 7px;
+}
 @media screen and (min-width: 768px) {
   .filter {
     margin-bottom: 40px;
@@ -339,6 +344,11 @@ ul {
   .filter-item:not(:last-child) {
     margin-right: 20px;
   }
+  .lamp {
+    position: absolute;
+    top: 85px;
+    right: 63px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -349,4 +359,24 @@ ul {
     width: 110px;
     font-size: 16px;
   }
+  .lamp {
+    position: absolute;
+    top: 105px;
+    right: 58px;
+  }
+}
+
+.dark-theme {
+  color: #fff;
+  background-color: #0c0a14;
+}
+.gallery-list-item-dark {
+  color: #f7f7f7;
+  background-color: #302752;
+  border: 1px solid transparent;
+  border-radius: 9px;
+}
+.filter-button-dark {
+  color: #fff;
+  background-color: #252133;
 }

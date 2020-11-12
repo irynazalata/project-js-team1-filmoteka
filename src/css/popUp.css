@@ -299,3 +299,20 @@
     right: 25px;
   }
 }
+
+.pop-up-dark {
+  color: white;
+  background-color: rgb(57, 52, 83);
+}
+.changeThemeBtn-dark {
+  color: white;
+
+  background-color: #252133;
+}
+.pop-up-buttons-dark button {
+  color: white;
+  background-color: #252133;
+}
+.changeThemeText-dark {
+  color: white;
+}
