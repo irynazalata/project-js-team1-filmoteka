@@ -1,6 +1,7 @@
 import cards from '../templates/cardGallery.hbs';
 import '../css/card.css';
-export default function library() {    
+export default function library() {   
+    const filter = document.querySelector('.filter');
     const searchBox = document.querySelector(".search-box");
     const errorP = document.querySelector(".error");
     const container = document.querySelector(".header-container");
@@ -12,8 +13,8 @@ export default function library() {
 
 
     const libraryOpen = function () {
-        
-            container.removeChild(searchBox);
+        filter.remove();
+        container.removeChild(searchBox);
         container.removeChild(errorP);
         changeBgr.classList.replace("header", "library");
         ul.classList.replace("home-film-list", "library-film-list");
