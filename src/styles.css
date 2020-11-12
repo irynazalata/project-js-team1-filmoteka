@@ -296,12 +296,12 @@ ul {
 }
 
 .filter-item:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .filter-button {
   outline: none;
-  width: 60px;
+  width: 70px;
   height: 30px;
   margin-bottom: 10px;
   cursor: pointer;
