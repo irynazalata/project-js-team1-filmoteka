@@ -13,44 +13,58 @@ const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
-export const render = function (page) {
-            spinnerOn();
-
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
-            .then(data => data.json())
-            .then(data => {
-                if (data.results.length <= 0) {
-                return error.insertAdjacentHTML("beforeend","Search result not successful. Enter the correct movie name.");
-                }
-                ul.innerHTML = "";
-                changeSearchPagination(data);
-                    data.results.forEach(el => {
-                    el.release_date = Number.parseInt(el.release_date);
-                    el.poster_path === null
-                        ? (el.poster_path = no_image_found)
-                        : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
-                    document
-                        .querySelector('.home-film-list')
-                        .insertAdjacentHTML('afterbegin', templateCard(el));
-
-                    fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}&page=${page}`)
-                        .then(data => data.json())
-                        .then(data => {
-                            document.querySelectorAll('.gallery-item-genre').forEach(el => {
-                                if (el.dataset.id == data.id) {
-                                    data.genres.forEach(i => {
-                                        el.insertAdjacentHTML(
-                                            'afterbegin',
-                                            `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
-                                        );
-                                    });
-                                }
-                            });
+const render = function (page) {
+              spinnerOn();
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
+        .then(data => data.json())
+        .then(data => {
+            if (data.results.length <= 0) {
+                return error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name.");
+            } ul.innerHTML = "";
+             changeSearchPagination(data);
+            const arr = data.results.map(el => {
+                el.release_date = new Date(el.release_date).getFullYear()
+                return el
+            })
+            arr.sort((a, b) => {
+                return a.popularity - b.popularity
+            })
+            arr.forEach(el => {
+                !el.release_date ? el.release_date = "Unknown" : el.release_date;
+                el.poster_path === null
+                    ? (el.poster_path = no_image_found)
+                    : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
+                document
+                    .querySelector('.home-film-list')
+                    .insertAdjacentHTML('afterbegin', templateCard(el));
+                fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
+                    .then(data => data.json())
+                    .then(data => {
+                        document.querySelectorAll('.gallery-item-genre').forEach(el => {
+                            if (el.dataset.id == data.id) {
+                                data.genres.forEach(i => {
+                                    el.insertAdjacentHTML(
+                                        'afterbegin',
+                                        `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                                    );
+                                });
+                            }
                         });
-                        spinnerOff();
-                 });
-             })
-             .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
+                    });
+              spinnerOff();
+            });
+        })
+        .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
+}   
+const getData = function (e) {
+    e.preventDefault();
+    let eventTarget;
+    e.currentTarget.nodeName === "svg" ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;
+    if (eventTarget.value.length >= 1) {
+        error.innerHTML = "";
+        render()
+    }
+};
 
 };
 const getData = function (e) {
