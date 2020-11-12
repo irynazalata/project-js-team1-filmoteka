@@ -14,7 +14,6 @@ export const findPopular = async function (page) {
     .then(data => data.json())
 
     .then(data => {
-      if (data.results.length === 0) document.querySelector('#pagination').classList.add('is-none-pagination');
       changePagination(data);
       data.results.sort((a, b) => {
         return b.popularity - a.popularity;
