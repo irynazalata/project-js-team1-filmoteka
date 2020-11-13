@@ -1,12 +1,12 @@
 const main = document.querySelector(".lamp")
 
-import "../images/sun.png"
-import "../images/moon.png"
+import sun from "../images/sun.png"
+import moon from "../images/moon.png"
 
 main.insertAdjacentHTML("beforeend",
 `<div class="theme-switch">
       
-    <img src="/images/sun.png" alt="" class="theme-switch__icon_sun" ></img>
+    <img src="${sun}" alt="" class="theme-switch__icon_sun" ></img>
       <div class="theme-switch__control">
         <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
           aria-label="Переключить между тёмной и светлой темой" />
@@ -15,7 +15,7 @@ main.insertAdjacentHTML("beforeend",
         <div aria-hidden="true" class="theme-switch__marker"></div>
       </div>
 
-      <img src="/images/moon.png" alt="" class="theme-switch__icon_moon" ></img>
+      <img src="${moon}" alt="" class="theme-switch__icon_moon" ></img>
     </div>`
 )
 
