@@ -1,7 +1,7 @@
 <div class="pop-up container">
   <div>
     <img src="{{poster_path}}" alt="" class="pop-up-img">
-    <button type="submit" class="play-trailer-btn changeThemeBtn">
+    <button type="submit" class="play-trailer-btn">
       <img src="{{play_btn}}" class="play-trailer-btn-icon" width="24" height="24">
       </img> Watch the trailer </button>
     <a href="tg://msg_url?url=MOVIE TITLE: {{title}}. GENRES: {{#each genres}}{{this.name}}/ {{/each}} RELEASE: {{release_date}}. 
@@ -37,7 +37,7 @@ More information can be found on our website: www.google.com, PICTURE: {{poster_
     </div>
     <div class="pop-up-description">
       <p class="pop-up-description-title changeThemeText">ABOUT</p>
-      <p class="pop-up-description-text ">{{overview}}</p>
+      <p class="pop-up-description-text changeThemeText ">{{overview}}</p>
     </div>
     <div class="pop-up-buttons">
       <button type="button" class="pop-up-btn-watched">{{text_watched_btn}}WATCHED</button>
