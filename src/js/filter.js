@@ -1,6 +1,7 @@
 import cards from '../templates/cardGallery.hbs';
 import no_image_found from '../images/no-image.jpg';
-// import { changePagination } from './pagination.js';
+import { popPagination, topRatedPagination, upComingPagination } from './pagination.js';
+import { spinnerOff, spinnerOn } from "./spinner";
 import '../css/card.css';
 import '../styles.css';
 
@@ -12,6 +13,7 @@ const topRatedBtn = document.querySelector('#top-rated');
 const upComingBtn = document.querySelector('#upcoming');
 
 const filterRender = function (data) {
+  spinnerOn();
   data.results.forEach(el => {
     el.release_date = Number.parseInt(el.release_date);
     el.poster_path === null
@@ -29,45 +31,50 @@ const filterRender = function (data) {
                 `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
               );
             });
+            spinnerOff();
           }
         });
       });
   });
 };
 
-const popular = function (page) {
-  filmList.innerHTML = '';
+export const popular = function (page) {
   fetch(
     ` https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}`,
   )
     .then(data => data.json())
     .then(data => {
+      filmList.innerHTML = '';
+      popPagination(data);
+
       data.results.sort((a, b) => {
         return b.popularity - a.popularity;
       });
       filterRender(data);
     });
 };
-const topRated = function (page) {
-  filmList.innerHTML = '';
+export const topRated = function (page) {
   fetch(
     ` https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=${page}`,
   )
     .then(data => data.json())
     .then(data => {
+  filmList.innerHTML = '';
+      topRatedPagination(data);
       data.results.sort((a, b) => {
         return b.vote_average - a.vote_average;
       });
       filterRender(data);
     });
 };
-const upComing = function (page) {
-  filmList.innerHTML = '';
+export const upComing = function (page) {
   fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=${page}`,
   )
     .then(data => data.json())
     .then(data => {
+      filmList.innerHTML = '';
+      upComingPagination(data);
       filterRender(data);
     });
 };
