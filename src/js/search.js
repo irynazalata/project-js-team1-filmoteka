@@ -14,13 +14,14 @@ const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
 export const render = function (page=1) {
-              spinnerOn();
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
         .then(data => data.json())
         .then(data => {
             if (data.results.length <= 0) {
                 return error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name.");
             } ul.innerHTML = "";
+            spinnerOn();
+
              changeSearchPagination(data);
             const arr = data.results.map(el => {
                 el.release_date = new Date(el.release_date).getFullYear()
@@ -40,6 +41,7 @@ export const render = function (page=1) {
                 fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
                     .then(data => data.json())
                     .then(data => {
+                        spinnerOff();
                         document.querySelectorAll('.gallery-item-genre').forEach(el => {
                             if (el.dataset.id == data.id) {
                                 data.genres.forEach(i => {
@@ -51,10 +53,10 @@ export const render = function (page=1) {
                             }
                         });
                     });
-              spinnerOff();
-            });
+            });       
         })
         .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
+
 }
 
 const getData = function (e) {
@@ -65,7 +67,8 @@ const getData = function (e) {
     e.currentTarget.nodeName === "svg" ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;
     if (eventTarget.value.length >= 1) {
         error.innerHTML = "";
-        render()
+        render();
+        spinnerOff();
     }
 };
 
