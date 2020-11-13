@@ -45,6 +45,7 @@ export const popular = function (page) {
     .then(data => data.json())
     .then(data => {
       filmList.innerHTML = '';
+      document.querySelector('#search-pagination').classList.add('is-none-pagination');
       popPagination(data);
 
       data.results.sort((a, b) => {
@@ -60,6 +61,7 @@ export const topRated = function (page) {
     .then(data => data.json())
     .then(data => {
   filmList.innerHTML = '';
+  document.querySelector('#search-pagination').classList.add('is-none-pagination');
       topRatedPagination(data);
       data.results.sort((a, b) => {
         return b.vote_average - a.vote_average;
@@ -74,6 +76,7 @@ export const upComing = function (page) {
     .then(data => data.json())
     .then(data => {
       filmList.innerHTML = '';
+      document.querySelector('#search-pagination').classList.add('is-none-pagination');
       upComingPagination(data);
       filterRender(data);
     });
