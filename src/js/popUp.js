@@ -134,7 +134,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
             })
         })
 
-        document.querySelector('.close-btn').addEventListener('click', () => document.querySelector('.basicLightbox').remove())
+        document.querySelector('.close-btn').addEventListener('click', () => { document.querySelector('.basicLightbox').remove(); document.body.classList.remove('modal-open') })
         
         const changeThemeBtn = document.querySelectorAll(".changeThemeBtn");
         const changeThemeBtnDiv = document.querySelectorAll(".pop-up-buttons");
