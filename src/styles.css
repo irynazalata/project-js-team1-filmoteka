@@ -382,3 +382,14 @@ ul {
 .modal-open {
   overflow: hidden;
 }
+.footer-dark {
+  color: white;
+  background-color: var(--primary-text-color);
+}
+.textFooter-dark {
+  color: wheat;
+}
+
+.imgBgr {
+  position: relative;
+}
