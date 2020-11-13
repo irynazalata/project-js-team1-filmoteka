@@ -63,6 +63,9 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
     ${popUpTemplate(data)}
   `).show();
         
+        
+        
+        
       const addWatched = document.querySelector('.pop-up-btn-watched')
       const addQueue = document.querySelector('.pop-up-btn-queue')
 
@@ -130,7 +133,32 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
   `).show();       
             })
         })
-        document.querySelector('.close-btn').addEventListener('click', () => { document.querySelector('.basicLightbox').remove(); document.body.classList.remove('modal-open') })
+
+        document.querySelector('.close-btn').addEventListener('click', () => document.querySelector('.basicLightbox').remove())
+        
+        const changeThemeBtn = document.querySelectorAll(".changeThemeBtn");
+        const changeThemeBtnDiv = document.querySelectorAll(".pop-up-buttons");
+        const changeThemeText=document.querySelectorAll(".changeThemeText")
+        const switchToggle = document.querySelector("#theme-switch-toggle");
+        const popUp = document.querySelector(".pop-up");
+        const closeBtn=document.querySelector(".close-btn")
+                  
+         if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
+             popUp.classList.remove("pop-up-dark")
+         } else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
+            switchToggle.checked = true
+           popUp.classList.add("pop-up-dark")      
+           changeThemeBtn.forEach(e => {
+             e.classList.replace("changeThemeBtn", "changeThemeBtn-dark")
+           }) 
+           changeThemeBtnDiv.forEach(e => {
+             e.classList.add("pop-up-buttons-dark")
+           })
+           changeThemeText.forEach(e => {
+              e.classList.replace("changeThemeText", "changeThemeText-dark")
+           })
+           closeBtn.classList.add("close-btn-dark")
+        }
       })
   }
 })
@@ -141,6 +169,7 @@ window.addEventListener('keydown', (event) => {
     document.body.classList.remove('modal-open');
   }
 })
+ 
 
 const ul = document.querySelector(".film-list")
 

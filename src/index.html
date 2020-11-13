@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="" />
-  <title>Filmoteka</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
-  <link
-    href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAACJAAAAAAAAAAAAAAAAAAAAAAAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/QAAAAEAAAAAAAAAAAAAAAAAAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP0AAAABAAAAAAAAAAAAAAAAAAAA+wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD9AAAAAQAAAAAAAABDAAAA3gAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/gAAAKgAAACrAAAA5wAAAP0AAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP4AAACqAAAArgAAAOkAAAD9AAAA4QAAAP0AAAD8AAAA/QAAAP0AAAD9AAAA/QAAAP0AAAD8AAAA/QAAAP0AAADkAAAAAAAAAAAAAABEAAAA4AAAABgAAAC1AAAA+wAAANwAAABJAAAAAAAAADkAAADHAAAA/AAAAOMAAABwAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACzAAAA2wAAAFwAAAClAAAA9QAAAD4AAAD0AAAAtwAAAFgAAACGAAAA+wAAAHAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAAGMAAAAAAAAACQAAAP4AAADdAAAA2QAAAAUAAAAAAAAAAAAAAIgAAADiAAAAAAAAAAAAAAAAAAAAAAAAANEAAACzAAAAFAAAAGQAAAD+AAAA0gAAALQAAAAAAAAAAAAAAAAAAABdAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAA9AAAA7QAAAP8AAAD9AAAAiAAAAGsAAADzAAAAKwAAAAAAAAAIAAAAvwAAAMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABFAAAAJgAAAAAAAAAHAAAAwgAAAPUAAAC8AAAA4gAAAO8AAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAABjAAAAmQAAAH8AAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAHAAAABwAAAAYAAAAEAAAAAAAAAAAAAAAEAAAEDwAAAA8AACDHAAABxwAAAI8AAIAPAAD8HwAA//8AAA=="
-    rel="icon" type="image/x-icon">
-</head>
-
-<body>
-  <!--Header-->
-
-  <header class="header" style="background-color: black; height: 230px">
-    <div class="header-container container">
-      <div class="logo-container" style="display: flex; justify-content: space-between; align-items: baseline">
-        <a href="./index.html" class="link-logo link">
-          <svg class="icon-logo" width="24" height="24">
-            <use href="./images/sprite.svg#icon-logo"></use>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <title>Filmoteka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
+     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhgAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAAChAAAAoQAAAKEAAACJAAAAAAAAAAAAAAAAAAAAAAAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/QAAAAEAAAAAAAAAAAAAAAAAAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP0AAAABAAAAAAAAAAAAAAAAAAAA+wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD9AAAAAQAAAAAAAABDAAAA3gAAAPsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/gAAAKgAAACrAAAA5wAAAP0AAAD7AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP4AAACqAAAArgAAAOkAAAD9AAAA4QAAAP0AAAD8AAAA/QAAAP0AAAD9AAAA/QAAAP0AAAD8AAAA/QAAAP0AAADkAAAAAAAAAAAAAABEAAAA4AAAABgAAAC1AAAA+wAAANwAAABJAAAAAAAAADkAAADHAAAA/AAAAOMAAABwAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACzAAAA2wAAAFwAAAClAAAA9QAAAD4AAAD0AAAAtwAAAFgAAACGAAAA+wAAAHAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAAGMAAAAAAAAACQAAAP4AAADdAAAA2QAAAAUAAAAAAAAAAAAAAIgAAADiAAAAAAAAAAAAAAAAAAAAAAAAANEAAACzAAAAFAAAAGQAAAD+AAAA0gAAALQAAAAAAAAAAAAAAAAAAABdAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAA9AAAA7QAAAP8AAAD9AAAAiAAAAGsAAADzAAAAKwAAAAAAAAAIAAAAvwAAAMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABFAAAAJgAAAAAAAAAHAAAAwgAAAPUAAAC8AAAA4gAAAO8AAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAABjAAAAmQAAAH8AAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAHAAAABwAAAAYAAAAEAAAAAAAAAAAAAAAEAAAEDwAAAA8AACDHAAABxwAAAI8AAIAPAAD8HwAA//8AAA==" rel="icon" type="image/x-icon">
+    </head>
+  <body>
+    <!--Header-->
+    <header class="header">
+     
+      <div class="header-container container">
+        <div class="lamp"></div>
+        <div class="logo-container">
+          <a href="./index.html" class="link-logo link">
+            <svg class="icon-logo" width="24" height="24">
+              <use href="./images/sprite.svg#icon-logo"></use>
+            </svg>
+            <span class="text-logo"> Filmoteka</span></a>
+          <nav class="navigation">
+            <ul class="header-list">
+              <li class="header-list-item">
+                <a href="./index.html" class="link-header current " id="home">HOME</a>
+              </li>
+              <li class="header-list-item link">
+                <button class="link-library" id="my-library">MY LIBRARY</button>
+                </li>
+            </ul>
+          </nav>
+        </div>
+         <form class="search-box" action="">
+          <input type="text" id="search" class="search-input" placeholder="Search the film">
+          <svg class="icon-modal" width="12" height="12">
+            <use href="./images/sprite.svg#icon-magnifier"></use>
           </svg>
           <span class="text-logo"
             style="margin-left: 12px;font-weight: 500;font-size: 30px;text-decoration: none; color: white">
@@ -103,8 +116,10 @@
           <use href="./images/sprite.svg#icon-heart"></use>
         </svg> by <span class="GoIT-stud">GoIT Students</span></p>
     </div>
+    
   </footer>
   <a class="back-to-top" title="Up"></a>
+  
 </body>
 
 </html>
