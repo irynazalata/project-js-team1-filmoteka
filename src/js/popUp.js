@@ -28,7 +28,7 @@ const showTrailer = async (query) => {
 }
 
 document.querySelector('.home-film-list').addEventListener('click', (event) => {
-  if (event.target.parentNode.nodeName === "LI") {
+  if (event.target.parentNode.nodeName === "LI" || event.target.parentNode.nodeName === "P" || event.target.parentNode.nodeName === "SPAN") {
     const id = event.target.parentNode.dataset['id']
     showModal(id)
       .then(data => {
