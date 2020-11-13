@@ -1,0 +1,37 @@
+.light-popup {
+  background-color: rgba(37, 37, 37, 0.555);
+}
+
+.email-popup-content {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 70vw;
+  height: 60vh;
+  margin-top: -220px;
+  color: var(--accent-color);
+  background-color: white;
+  border: solid 2px rgb(82, 82, 82);
+}
+
+.movie-img {
+  margin-right: 20px;
+  /* width: 100px; */
+  /* height: 50%; */
+}
+
+.email-popup-info {
+  text-align: left;
+}
+
+.email-popup-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.input-text::placeholder {
+  color: black;
+}
+.input-btn {
+  display: block;
+}

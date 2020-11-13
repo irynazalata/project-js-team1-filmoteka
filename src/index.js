@@ -11,3 +11,4 @@ import './js/filter.js';
 library();
 import "./js/dayNight.js"
 import "./css/dayNight.css"
+import './js/email.js'
