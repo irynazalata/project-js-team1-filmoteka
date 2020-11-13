@@ -302,17 +302,21 @@
 
 .pop-up-dark {
   color: white;
-  background-color: rgb(57, 52, 83);
+  background-color: hsl(253, 21%, 16%);
 }
 .changeThemeBtn-dark {
   color: white;
-
-  background-color: #252133;
+  background-color: #120f1f;
+  border: solid 1px white;
 }
 .pop-up-buttons-dark button {
   color: white;
-  background-color: #252133;
+  background-color: #120f1f;
+  border: solid 1px white;
 }
 .changeThemeText-dark {
   color: white;
+}
+.close-btn-dark {
+  background-color: white;
 }

@@ -329,8 +329,8 @@ ul {
 }
 .lamp {
   position: absolute;
-  top: 85px;
-  right: 7px;
+  top: 200px;
+  right: 15px;
 }
 @media screen and (min-width: 768px) {
   .filter {
@@ -345,8 +345,6 @@ ul {
     margin-right: 20px;
   }
   .lamp {
-    position: absolute;
-    top: 85px;
     right: 63px;
   }
 }
@@ -360,8 +358,6 @@ ul {
     font-size: 16px;
   }
   .lamp {
-    position: absolute;
-    top: 105px;
     right: 58px;
   }
 }
@@ -371,12 +367,15 @@ ul {
   background-color: #0c0a14;
 }
 .gallery-list-item-dark {
+  padding: 0 5px 5px 5px;
   color: #f7f7f7;
-  background-color: #302752;
+  background-color: hsl(253, 21%, 16%);
+
   border: 1px solid transparent;
   border-radius: 9px;
 }
 .filter-button-dark {
   color: #fff;
-  background-color: #252133;
+  background-color: #120f1f;
+  border: solid 1px white;
 }

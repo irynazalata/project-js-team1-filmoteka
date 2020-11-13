@@ -6,17 +6,17 @@
 
 .theme-switch__icon_sun {
   position: absolute;
-  top: -5px;
+  top: -2px;
   left: -27px;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
 }
 .theme-switch__icon_moon {
   position: absolute;
-  top: -5px;
+  top: -2px;
   left: 37px;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 18px;
 }
 
 .theme-switch__control {

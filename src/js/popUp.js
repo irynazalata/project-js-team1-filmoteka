@@ -137,6 +137,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         const changeThemeText=document.querySelectorAll(".changeThemeText")
         const switchToggle = document.querySelector("#theme-switch-toggle");
         const popUp = document.querySelector(".pop-up");
+        const closeBtn=document.querySelector(".close-btn")
                   
          if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
              popUp.classList.remove("pop-up-dark")
@@ -152,6 +153,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
            changeThemeText.forEach(e => {
               e.classList.replace("changeThemeText", "changeThemeText-dark")
            })
+           closeBtn.classList.add("close-btn-dark")
         }
 
 
