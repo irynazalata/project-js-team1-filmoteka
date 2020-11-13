@@ -38,56 +38,76 @@
           <svg class="icon-modal" width="12" height="12">
             <use href="./images/sprite.svg#icon-magnifier"></use>
           </svg>
-        </form>
-        <p class="error"></p>
+          <span class="text-logo"
+            style="margin-left: 12px;font-weight: 500;font-size: 30px;text-decoration: none; color: white">
+            Filmoteka</span></a>
+        <nav class="navigation">
+          <ul class="header-list" style="display: flex; list-style: none">
+            <li class="header-list-item">
+              <a href="./index.html" class="link-header current " id="home" style="color: white">HOME</a>
+            </li>
+            <li class="header-list-item link">
+              <button class="link-library" id="my-library"
+                style="background-color: transparent; display: block; color: white">MY
+                LIBRARY</button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </header>
-    <main>
-      <section class="main">
-        <div class="container">
-          <ul class="filter list">
-            <!-- <li class="filter-item">
+      <form class="search-box" action="" style="text-align: center">
+        <input type="text" id="search" class="search-input" placeholder="Search the film"
+          style="background: transparent; border: none; border-bottom: 0.5px solid #ffffff; outline: none">
+        <svg class="icon-modal" width="12" height="12">
+          <use href="./images/sprite.svg#icon-magnifier"></use>
+        </svg>
+      </form>
+      <p class="error"></p>
+    </div>
+  </header>
+  <main>
+    <section class="main">
+      <div class="container">
+        <ul class="filter list" style="display: flex;justify-content: center; list-style: none">
+          <!-- <li class="filter-item">
               <button type="button" class="filter-button">All</button>
             </li> -->
-            <li class="filter-item">
-              <button type="button" class="filter-button active-btn">Popular</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Top Rated</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Upcoming</button>
-            </li>
-            <li class="filter-item">
-              <button type="button" class="filter-button">Latest</button>
-            </li>
-          </ul>
-          <h2 class="visually-hidden">gallery</h2>
-    <div id="spinner" class="">
-      <div class="sk-circle">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
-      </div>
-    </div>
-          <ul class="film-list home-film-list watched">
-            <!-- li в ul вставляються динамічно  -->
-            <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
-          </ul>
-         <div id="pagination" class="tui-pagination"></div>
-         <div id="search-pagination" class="tui-pagination specificity is-none-pagination"></div>
+          <li class="filter-item">
+            <button type="button" class="filter-button active-btn" id="popular">Popular</button>
+          </li>
+          <li class="filter-item">
+            <button type="button" class="filter-button" id="top-rated">Top Rated</button>
+          </li>
+          <li class="filter-item">
+            <button type="button" class="filter-button" id="upcoming">Upcoming</button>
+          </li>
+        </ul>
+        <h2 class="visually-hidden" style="text-align: center">Gallery</h2>
+        <div id="spinner" class="">
+          <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
         </div>
+        <ul class="film-list home-film-list watched">
+          <!-- li в ul вставляються динамічно  -->
+          <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
+        </ul>
+        <div id="pagination" class="tui-pagination"></div>
+        <div id="search-pagination" class="tui-pagination specificity is-none-pagination"></div>
+        <div id="popular-pagination" class="tui-pagination"></div>
+        <div id="rated-pagination" class="tui-pagination specificity is-none-pagination"></div>
+        <div id="upcoming-pagination" class="tui-pagination specificity is-none-pagination"></div>
       </div>
-
     </section>
   </main>
   <footer class="footer">

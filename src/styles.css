@@ -297,12 +297,12 @@ ul {
 }
 
 .filter-item:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .filter-button {
   outline: none;
-  width: 60px;
+  width: 70px;
   height: 30px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -378,4 +378,7 @@ ul {
   color: #fff;
   background-color: #120f1f;
   border: solid 1px white;
+}
+.modal-open {
+  overflow: hidden;
 }

@@ -3,7 +3,7 @@ import templateCard from "../templates/cardGallery.hbs";
 import no_image_found from "../images/no-image.jpg";
 import '../css/card.css';
 import { spinnerOff, spinnerOn } from "./spinner";
-import { changeSearchPagination } from './pagination.js';
+import { changeSearchPagination, searchPagination } from './pagination.js';
 
 
 const TOKEN = "401d61f37c17d956a98039a1a0734109";
@@ -13,16 +13,15 @@ const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
 
-export const render = function (page) {
-              spinnerOn();
+export const render = function (page=1) {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
         .then(data => data.json())
         .then(data => {
-  console.log(data);
-
             if (data.results.length <= 0) {
                 return error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name.");
             } ul.innerHTML = "";
+            spinnerOn();
+
              changeSearchPagination(data);
             const arr = data.results.map(el => {
                 el.release_date = new Date(el.release_date).getFullYear()
@@ -42,6 +41,7 @@ export const render = function (page) {
                 fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
                     .then(data => data.json())
                     .then(data => {
+                        spinnerOff();
                         document.querySelectorAll('.gallery-item-genre').forEach(el => {
                             if (el.dataset.id == data.id) {
                                 data.genres.forEach(i => {
@@ -53,18 +53,22 @@ export const render = function (page) {
                             }
                         });
                     });
-              spinnerOff();
-            });
+            });       
         })
         .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
-}   
+
+}
+
 const getData = function (e) {
     e.preventDefault();
+    searchPagination.reset();
+
     let eventTarget;
     e.currentTarget.nodeName === "svg" ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;
     if (eventTarget.value.length >= 1) {
         error.innerHTML = "";
-        render()
+        render();
+        spinnerOff();
     }
 };
 

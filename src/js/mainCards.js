@@ -10,13 +10,12 @@ const key = '401d61f37c17d956a98039a1a0734109';
 
 export const findPopular = async function (page) {
   spinnerOn();
+  document.querySelector('#popular-pagination').classList.add('is-none-pagination');
   return await fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${key}&page=${page}`,
   )
     .then(data => data.json())
-
     .then(data => {
-      if (data.results.length === 0) document.querySelector('#pagination').classList.add('is-none-pagination');
       changePagination(data);
       data.results.sort((a, b) => {
         return b.popularity - a.popularity;
