@@ -12,8 +12,9 @@ const ul = document.querySelector(".home-film-list")
 const error = document.querySelector(".error")
 const form = document.querySelector(".search-box")
 const headerSvg = document.querySelector(".icon-modal") 
+const filter = document.querySelector('.filter')
 
-export const render = function (page=1) {
+export const render = function (page = 1) {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${input.value}&page=${page}`)
         .then(data => data.json())
         .then(data => {
@@ -61,6 +62,7 @@ export const render = function (page=1) {
 
 const getData = function (e) {
     e.preventDefault();
+    filter.remove();
     searchPagination.reset();
 
     let eventTarget;
