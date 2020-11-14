@@ -11,7 +11,10 @@ const showEmailPopUp = function (e) {
   let date = '';
   if (localStorage.getItem('subscription')) {
     accept = JSON.parse(localStorage.getItem('subscription')).accept;
-    accept ? window.removeEventListener('mousemove',showEmailPopUp) : date = JSON.parse(localStorage.getItem('subscription')).time
+    if (accept) {
+      window.removeEventListener('mousemove', showEmailPopUp);
+      return
+    } else date = JSON.parse(localStorage.getItem('subscription')).time
   }
   if (!(localStorage.getItem('subscription')) || ((Date.now() - date) > 259200000)) {
     if (e.clientY <= 5) {
