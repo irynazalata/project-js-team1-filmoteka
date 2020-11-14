@@ -8,9 +8,7 @@ export default function library() {
     const changeBgr = document.querySelector(".header");
     const emphasisMinus = document.querySelector("#home");
     const emphasisPlus = document.querySelector("#my-library");
-    
-  const ul = document.querySelector(".film-list")
-
+    const ul = document.querySelector(".film-list");
 
     const libraryOpen = function () {
 
@@ -21,34 +19,19 @@ export default function library() {
         ul.classList.replace("home-film-list", "library-film-list");
         emphasisMinus.classList.remove("current");
         emphasisPlus.classList.add("current");
-
         ul.innerHTML=""
-       watchedFilms()
         container.insertAdjacentHTML("beforeend",
-            '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn" id="queue">queue</button></div > ')
+            '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn indent-btn" id="queue">queue</button><button class= "library-btn new-queue" id = "new_queue" >NOT WATCHED YET</div > ')
        emphasisPlus.removeEventListener("click", libraryOpen);
-    
-        const containerButton = document.querySelector(".container-button");
         const watched = document.querySelector("#watched");
         const queue = document.querySelector("#queue");
-
-        
-        
-        const buttonActive = function (event) {
-         event.target
-            if (event.target.nodeName !== "BUTTON") {
-              return
-            } else {
-                watched.classList.toggle("btn-active")
-                queue.classList.toggle("btn-active")
-                ul.classList.toggle("watched")
-            };   
-        };
-        containerButton.addEventListener("click", buttonActive);
-         
-       
-      
-       function watchedFilms  () {
+        const btnNewQueue = document.querySelector('#new_queue')
+        const watchedFilms= function () {
+           watched.classList.add("btn-active")
+            queue.classList.remove("btn-active")
+           btnNewQueue.classList.remove("btn-active")
+           ul.classList.add("watched")
+           ul.classList.remove("newWatched")
            ul.innerHTML = ""
            const array = JSON.parse(localStorage.getItem('Watched'));
            document.querySelector('#pagination').classList.add('is-none-pagination');
@@ -57,11 +40,9 @@ export default function library() {
                array.forEach(el => {
                         el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
-
                    array.forEach(e => {
                        if (el.id==e.id) {
                            e.genres.forEach(i => {
-                       
                                document.querySelector(".gallery-item-genre").insertAdjacentHTML(
                                    'afterbegin',
                                    `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
@@ -72,8 +53,8 @@ export default function library() {
                    })
 
                })
-
-           }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>')}
+            }
+            else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
 
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
@@ -99,18 +80,25 @@ export default function library() {
        }    
           mainCardsDark()
           switchToggle.addEventListener('change', mainCardsDark)
-    };
-       const queueFilms = function () {
+        };
+
+        watchedFilms()
+
+        const queueFilms = function () {
+            
+           watched.classList.remove("btn-active")
+            queue.classList.add("btn-active")
+            btnNewQueue.classList.remove("btn-active")
+            ul.classList.remove("watched")
+            ul.classList.remove("newWatched")
         ul.innerHTML = ""
-        document.querySelector('#pagination').classList.add('is-none-pagination');
-         
         const array = JSON.parse(localStorage.getItem('Queue'));
+        document.querySelector('#pagination').classList.add('is-none-pagination');
 
         if (array !== null && array.length !== 0) {
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))
-
                 array.forEach(e => {
                     if (el.id == e.id) {
                         e.genres.forEach(i => {
@@ -124,10 +112,9 @@ export default function library() {
                     }
                 })
             })
-           } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
+            }
+            else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
            
-
-         
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
       const switchToggle = document.querySelector("#theme-switch-toggle");
@@ -152,14 +139,55 @@ export default function library() {
        }    
           mainCardsDark()
           switchToggle.addEventListener('change', mainCardsDark)
-
-
     };
 
     watched.addEventListener("click", watchedFilms);
     queue.addEventListener("click", queueFilms);
         
+        const newQueueFilms = function () {
+        let newQueue = [];
+        let arrQueue = JSON.parse(localStorage.getItem('Queue')) || [];
+        let arrWatched = JSON.parse(localStorage.getItem('Watched')) || [];
+        let IDarrWatched = [];
+        let IDarrQueue = [];
+        let IDnewQueue = [];
+          
+        arrWatched.forEach((el) => { IDarrWatched.push(el.id) })
+        arrQueue.forEach((el) => { IDarrQueue.push(el.id) })
+        IDnewQueue =  IDarrQueue.filter(number => IDarrWatched.indexOf(number) === -1);
+        arrQueue.forEach((el) => {
+        IDnewQueue.includes(el.id) ? newQueue.push(el) : ""
+        })
+
+          ul.classList.add("newWatched")
+          watched.classList.remove("btn-active")
+          queue.classList.remove("btn-active")
+          btnNewQueue.classList.add("btn-active")
+          ul.innerHTML = ""
+          document.querySelector('#pagination').classList.add('is-none-pagination');
+          const array = newQueue;
+            
+        if (array !== null && array.length !== 0 ) {
+            array.forEach(el => {
+                 el.release_date = new Date(el.release_date).getFullYear();
+                ul.insertAdjacentHTML('afterbegin', cards(el))
+
+                array.forEach(e => {
+                    if (el.id == e.id) {
+                        e.genres.forEach(i => {
+                            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                'afterbegin',
+                                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                            );
+                        })
+                    }
+                })
+            })
+            }
+            else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
+            };
+             btnNewQueue.addEventListener('click', newQueueFilms)
     };   
-  
+
     emphasisPlus.addEventListener("click", libraryOpen);
 };

@@ -63,9 +63,6 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
     ${popUpTemplate(data)}
   `).show();
         
-        
-        
-        
       const addWatched = document.querySelector('.pop-up-btn-watched')
       const addQueue = document.querySelector('.pop-up-btn-queue')
 
@@ -83,6 +80,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
             }
             localStorage.setItem('Watched', JSON.stringify(arrWatched))
           event.target.textContent = "DELETE FROM WATCHED"
+          newQueueFilms(arrQueue, arrWatched);
           watchedFilms()
         }
         else if (event.target.textContent === "DELETE FROM WATCHED") {
@@ -91,10 +89,10 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           if (isUnique !== undefined) {
             const index = arrWatched.indexOf(isUnique)
             arrWatched.splice(index, 1)
-            
           }
           localStorage.setItem('Watched', JSON.stringify(arrWatched))
           event.target.textContent = 'ADD TO WATCHED'
+          newQueueFilms(arrQueue, arrWatched);
           watchedFilms()
         }
       }
@@ -107,7 +105,8 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           }
           localStorage.setItem('Queue', JSON.stringify(arrQueue))
           event.target.textContent = "DELETE FROM QUEUE"
-          queueFilms()
+          newQueueFilms(arrQueue, arrWatched);
+          queueFilms();
         }
         else if (event.target.textContent === "DELETE FROM QUEUE") {
           isUnique = arrQueue.find(el => el.id == id)
@@ -117,7 +116,8 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           }
           localStorage.setItem('Queue', JSON.stringify(arrQueue))
           event.target.textContent = 'ADD TO QUEUE'
-          queueFilms()
+          newQueueFilms(arrQueue, arrWatched);
+          queueFilms();
         } 
       }
 
@@ -127,7 +127,6 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         document.querySelector('.play-trailer-btn').addEventListener('click', () => {
           showTrailer(data.original_title)
             .then(data => {
-              console.log(data)
               basicLightbox.create(`
     ${trailerTemplate(data.items[0])}
   `).show();       
@@ -143,7 +142,6 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
         const popUp = document.querySelector(".pop-up");
         const closeBtn = document.querySelector(".close-btn")
         
-                  
          if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
              popUp.classList.remove("pop-up-dark")
          } else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
@@ -159,7 +157,6 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
               e.classList.replace("changeThemeText", "changeThemeText-dark")
            })
            closeBtn.classList.add("close-btn-dark")
-           
         }
       })
   }
@@ -172,11 +169,10 @@ window.addEventListener('keydown', (event) => {
   }
 })
  
-
 const ul = document.querySelector(".film-list")
 
 function watchedFilms() {
- if (ul.classList.contains("library-film-list") && ul.classList.contains("watched")) {
+ if (!ul.classList.contains("newWatched") && ul.classList.contains("library-film-list") && ul.classList.contains("watched")) {
   ul.innerHTML = ""
   const array = JSON.parse(localStorage.getItem('Watched'));
   if (array !== null && array.length !== 0) {
@@ -198,10 +194,9 @@ function watchedFilms() {
 }
 };
 
-
 function queueFilms() {
   
-  if (ul.classList.contains("library-film-list") && !ul.classList.contains("watched")) {
+  if (!ul.classList.contains("newWatched") && ul.classList.contains("library-film-list") && !ul.classList.contains("watched")) {
     ul.innerHTML = ""
     const array = JSON.parse(localStorage.getItem('Queue'));
     if (array !== null && array.length !== 0) {
@@ -221,4 +216,48 @@ function queueFilms() {
       })
     } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
   }
-    };
+};
+    
+const newQueueFilms = function (queue, watched) {
+
+  let newQueue = [];
+  let IDarrWatched = [];
+  let IDarrQueue = [];
+  let IDnewQueue = [];
+      
+  const filtering = function (arrQueue, arrWatched) {
+   
+    arrWatched.forEach((el) => { IDarrWatched.push(el.id) })
+    arrQueue.forEach((el) => { IDarrQueue.push(el.id) })
+    IDnewQueue = IDarrQueue.filter(number => IDarrWatched.indexOf(number) === -1);
+    arrQueue.forEach((el) => {
+      IDnewQueue.includes(el.id) ? newQueue.push(el) : ""
+    })
+  };
+
+      filtering(queue, watched)
+
+      if (ul.classList.contains("library-film-list") && ul.classList.contains("newWatched")) {
+        ul.innerHTML = "";
+          document.querySelector('#pagination').classList.add('is-none-pagination');
+             const array = newQueue;
+            
+        if (array !== null && array.length !== 0 ) {
+            array.forEach(el => {
+                 el.release_date = new Date(el.release_date).getFullYear();
+                ul.insertAdjacentHTML('afterbegin', cards(el))
+                array.forEach(e => {
+                    if (el.id == e.id) {
+                        e.genres.forEach(i => {
+                            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                'afterbegin',
+                                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                            );
+                           
+                        })
+                    }
+                })
+            })
+        }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>')}
+      };
+};
