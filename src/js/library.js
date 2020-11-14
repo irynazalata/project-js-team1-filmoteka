@@ -21,7 +21,7 @@ export default function library() {
         emphasisPlus.classList.add("current");
         ul.innerHTML=""
         container.insertAdjacentHTML("beforeend",
-            '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn indent-btn" id="queue">queue</button><button class= "library-btn " id = "new_queue" > NEW QUEUE</div > ')
+            '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn indent-btn" id="queue">queue</button><button class= "library-btn new-queue" id = "new_queue" >NOT WATCHED YET</div > ')
        emphasisPlus.removeEventListener("click", libraryOpen);
         const watched = document.querySelector("#watched");
         const queue = document.querySelector("#queue");
