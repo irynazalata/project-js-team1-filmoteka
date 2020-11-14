@@ -6,7 +6,7 @@ import moon from "../images/moon.png"
 main.insertAdjacentHTML("beforeend",
 `<div class="theme-switch">
       
-    <img src="${sun}" alt="" class="theme-switch__icon_sun" ></img>
+    <img src="https://cdn2.iconfinder.com/data/icons/gardening-flat-colorful/2048/1954_-_Sun_II-512.png" alt="" class="theme-switch__icon_sun" ></img>
       <div class="theme-switch__control">
         <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
           aria-label="Переключить между тёмной и светлой темой" />
@@ -15,7 +15,7 @@ main.insertAdjacentHTML("beforeend",
         <div aria-hidden="true" class="theme-switch__marker"></div>
       </div>
 
-      <img src="${moon}" alt="" class="theme-switch__icon_moon" ></img>
+      <img src="https://cdn0.iconfinder.com/data/icons/weather-web-app-ui-colored/100/weather-15-512.png" alt="" class="theme-switch__icon_moon" ></img>
     </div>`
 )
 

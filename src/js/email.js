@@ -9,14 +9,12 @@ const images = { movie: movie};
 const showEmailPopUp = function (e) {
   let accept = '';
   let date = '';
-
   if (localStorage.getItem('subscription')) {
     accept = JSON.parse(localStorage.getItem('subscription')).accept;
-    accept ? "" : date = JSON.parse(localStorage.getItem('subscription')).time
+    accept ? window.removeEventListener('mousemove',showEmailPopUp) : date = JSON.parse(localStorage.getItem('subscription')).time
   }
   if (!(localStorage.getItem('subscription')) || ((Date.now() - date) > 259200000)) {
     if (e.clientY <= 5) {
-      console.log('done')
       basicLightbox.create(`
       ${emailPopUp(images)}
   `).show();
