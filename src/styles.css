@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -73,7 +73,7 @@ ul {
   background-position: center;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url("./images/mob/Home_1x.jpg");
+    url('./images/mob/Home_1x.jpg');
 }
 
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
@@ -81,14 +81,14 @@ ul {
   screen and (min-resolution: 2dppx) and (min-width: 320px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url("./images/mob/Home_2x.jpg");
+      url('./images/mob/Home_2x.jpg');
   }
 }
 
 @media screen and (min-width: 768px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url("./images/tablet/Home_1x.jpg");
+      url('./images/tablet/Home_1x.jpg');
   }
 }
 
@@ -97,14 +97,14 @@ ul {
   screen and (min-resolution: 2dppx) and (min-width: 768px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url("./images/tablet/Home_2x.jpg");
+      url('./images/tablet/Home_2x.jpg');
   }
 }
 
 @media screen and (min-width: 1024px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url("./images/desktop/Home_1x.jpg");
+      url('./images/desktop/Home_1x.jpg');
   }
 }
 
@@ -113,7 +113,7 @@ ul {
   screen and (min-resolution: 2dppx) and (min-width: 1024px) {
   .header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url("./images/desktop/Home_2x.jpg");
+      url('./images/desktop/Home_2x.jpg');
   }
 }
 /*============ Finish background =============*/
@@ -243,6 +243,8 @@ ul {
   background-color: var(--footer-bg-color);
 }
 .GoIT-stud {
+  display: inline-block;
+  color: var(--footer-text-color);
   text-decoration: underline;
 }
 .heart-svg {
