@@ -367,12 +367,17 @@ ul {
   background-color: #0c0a14;
 }
 .gallery-list-item-dark {
-  padding: 0 5px 5px 5px;
   color: #f7f7f7;
   background-color: hsl(253, 21%, 16%);
 
-  border: 1px solid transparent;
   border-radius: 9px;
+}
+
+.gallery-list-item-dark .gallery-item-title {
+  padding: 0 5px 5px 5px;
+}
+.gallery-list-item-dark .gallery-item-info {
+  padding: 0 5px 5px 5px;
 }
 .filter-button-dark {
   color: #fff;
