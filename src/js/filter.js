@@ -20,7 +20,7 @@ const filterRender = function (data) {
       ? (el.poster_path = no_image_found)
       : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
     filmList.insertAdjacentHTML('beforeend', cards(el));
-    fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
+     fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${key}`)
       .then(data => data.json())
       .then(data => {
         document.querySelectorAll('.gallery-item-genre').forEach(el => {
@@ -31,11 +31,43 @@ const filterRender = function (data) {
                 `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
               );
             });
+              
             spinnerOff();
           }
         });
+
+        
       });
   });
+
+  const li = document.querySelectorAll(".gallery-list-item");
+  const h3 = document.querySelectorAll(".gallery-item-title");
+      const switchToggle = document.querySelector("#theme-switch-toggle");
+      
+      const mainCardsDark = function (){         
+          if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
+             li.forEach(e => {
+               e.classList.remove("gallery-list-item-dark")               
+             })
+            h3.forEach(e => {
+               e.classList.remove("gallery-item-title-dark")               
+           })
+          }
+          else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
+            switchToggle.checked = true
+            li.forEach(e => {
+              e.classList.add("gallery-list-item-dark")
+            })
+            h3.forEach(e => {
+              e.classList.add("gallery-item-title-dark")               
+            })
+           
+          }
+       }    
+          mainCardsDark()
+          switchToggle.addEventListener('change', mainCardsDark)
+
+         
 };
 
 export const popular = function (page) {
@@ -83,7 +115,7 @@ export const upComing = function (page) {
 };
 
 const getData = function (e) {
-  e.preventDefault();
+    e.preventDefault();
   if (e.target.textContent === 'Popular') {
     popular();
     topRatedBtn.classList.remove('active-btn');
@@ -102,3 +134,7 @@ const getData = function (e) {
   }
 };
 filterList.addEventListener('click', getData);
+
+
+  
+

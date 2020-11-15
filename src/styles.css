@@ -324,11 +324,6 @@ ul {
   border: none;
 }
 
-.active-btn {
-  color: var(--primary-white-color);
-  background-color: var(--accent-color);
-  border: none;
-}
 .lamp {
   position: absolute;
   top: 200px;
@@ -399,4 +394,9 @@ ul {
 
 .imgBgr {
   position: relative;
+}
+.active-btn {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border: none;
 }
