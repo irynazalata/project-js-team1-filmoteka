@@ -117,6 +117,8 @@
 .pop-up-buttons button {
   cursor: pointer;
   display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
   width: 118px;
   height: 44px;
   font-size: 9.5px;

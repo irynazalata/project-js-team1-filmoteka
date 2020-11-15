@@ -10,15 +10,48 @@ import play_btn from '../images/play-btn.png';
 import telegram from '../images/telegram.png';
 
 import '../css/popUp.css';
-import { locale } from 'core-js';
 
 let objPopUp = {};
+export let language;
+const LANGUAGE = {
+  en: 'en-US',
+  ua: 'uk-UA',
+}
+const checkboxLanguageRef = document.querySelector('.language-switch__toggle');
+const bodyRef = document.querySelector('body');
 
 const key = '401d61f37c17d956a98039a1a0734109';
 const showModal = async (id) => {
-  const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}`);
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=${language}`);
   const data = response.json();
   return data
+}
+
+(function initLanguage() {
+  if (localStorage.getItem('language') === null) {
+    language = LANGUAGE.en; 
+    localStorage.setItem('language', language); 
+  } else {
+    language = localStorage.getItem('language');
+  }
+  checkboxLanguageRef.checked =
+    language === LANGUAGE.en ? false : true;
+  bodyRef.classList.add(language);
+})();
+
+export function changeLanguage() {
+  let oldLanguage = localStorage.getItem('language');
+  if (language === LANGUAGE.en) {
+    language = LANGUAGE.ua;
+    localStorage.setItem('language', language); 
+    bodyRef.classList.replace(oldLanguage, language);
+    checkboxLanguageRef.checked = true;
+  } else {
+    language = LANGUAGE.en;
+    localStorage.setItem('language', language);
+    bodyRef.classList.replace(oldLanguage, language);
+    checkboxLanguageRef.checked = false;
+  }
 }
 
 const showTrailer = async (query) => {
@@ -34,22 +67,41 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
       .then(data => {
         document.body.classList.add('modal-open');
         objPopUp = data
-        if (JSON.parse(localStorage.getItem('Queue')) === null || JSON.parse(localStorage.getItem('Queue')).length === 0) { data.text_queue_btn = "ADD TO " }
+      if (language === 'en-US') {
+        if (JSON.parse(localStorage.getItem('Queue')) === null || JSON.parse(localStorage.getItem('Queue')).length === 0) { data.text_queue_btn = "ADD TO QUEUE" }
         else if (JSON.parse(localStorage.getItem('Queue')) !== null) {
-          data.text_queue_btn = "ADD TO ";
+          data.text_queue_btn = "ADD TO QUEUE";
           JSON.parse(localStorage.getItem('Queue')).forEach(el => {
-            el.id == id ? data.text_queue_btn = "DELETE FROM " : "";
+            el.id == id ? data.text_queue_btn = "DELETE FROM QUEUE" : "";
             }
           )
         }
-        if (JSON.parse(localStorage.getItem('Watched')) === null || JSON.parse(localStorage.getItem('Watched')).length === 0) { data.text_watched_btn = "ADD TO " }
+        if (JSON.parse(localStorage.getItem('Watched')) === null || JSON.parse(localStorage.getItem('Watched')).length === 0) { data.text_watched_btn = "ADD TO WATCHED" }
         else if (JSON.parse(localStorage.getItem('Watched')) !== null) {
-          data.text_watched_btn = "ADD TO "
+          data.text_watched_btn = "ADD TO WATCHED"
           JSON.parse(localStorage.getItem('Watched')).forEach(el => {
-            el.id == id ? data.text_watched_btn = "DELETE FROM " : "";
+            el.id == id ? data.text_watched_btn = "DELETE FROM WATCHED" : "";
             }
-          )
+          )}
         }
+        if (language === 'uk-UA') {
+          if (JSON.parse(localStorage.getItem('Queue')) === null || JSON.parse(localStorage.getItem('Queue')).length === 0) { data.text_queue_btn = "ДОДАТИ В ЧЕРГУ" }
+          else if (JSON.parse(localStorage.getItem('Queue')) !== null) {
+            data.text_queue_btn = "ДОДАТИ В ЧЕРГУ";
+            JSON.parse(localStorage.getItem('Queue')).forEach(el => {
+              el.id == id ? data.text_queue_btn = "ВИДАЛИТИ З ЧЕРГИ" : "";
+              }
+            )
+          }
+          if (JSON.parse(localStorage.getItem('Watched')) === null || JSON.parse(localStorage.getItem('Watched')).length === 0) { data.text_watched_btn = "ДОДАТИ В ПЕРЕГЛЯНУТІ" }
+          else if (JSON.parse(localStorage.getItem('Watched')) !== null) {
+            data.text_watched_btn = "ДОДАТИ В ПЕРЕГЛЯНУТІ"
+            JSON.parse(localStorage.getItem('Watched')).forEach(el => {
+              el.id == id ? data.text_watched_btn = "ВИДАЛИТИ З ПЕРЕГЛЯНУТИХ" : "";
+              }
+            )}
+          }
+
         data.release_date = Number.parseInt(data.release_date);
         data.telegram = telegram;
         data.play_btn = play_btn;
@@ -72,7 +124,7 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
       let isUnique;
 
       const getArrWatched = function (event) {
-
+        if (language === 'en-US') {
         if (event.target.textContent === 'ADD TO WATCHED') {
           isUnique = arrWatched.find(el => el.id == id)
           if (isUnique === undefined) {
@@ -94,10 +146,35 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           event.target.textContent = 'ADD TO WATCHED'
           newQueueFilms(arrQueue, arrWatched);
           watchedFilms()
-        }
+        }}
+        if (language === 'uk-UA') {
+          if (event.target.textContent === 'ДОДАТИ В ПЕРЕГЛЯНУТІ') {
+            isUnique = arrWatched.find(el => el.id == id)
+            if (isUnique === undefined) {
+               arrWatched.push(objPopUp);
+              }
+              localStorage.setItem('Watched', JSON.stringify(arrWatched))
+            event.target.textContent = "ВИДАЛИТИ З ПЕРЕГЛЯНУТИХ"
+            newQueueFilms(arrQueue, arrWatched);
+            watchedFilms()
+          }
+          else if (event.target.textContent === "ВИДАЛИТИ З ПЕРЕГЛЯНУТИХ") {
+           
+            isUnique = arrWatched.find(el => el.id == id)
+            if (isUnique !== undefined) {
+              const index = arrWatched.indexOf(isUnique)
+              arrWatched.splice(index, 1)
+            }
+            localStorage.setItem('Watched', JSON.stringify(arrWatched))
+            event.target.textContent = 'ДОДАТИ В ПЕРЕГЛЯНУТІ'
+            newQueueFilms(arrQueue, arrWatched);
+            watchedFilms()
+          }}
+
       }
 
       const getArrQueue = function (event) {
+      if (language === 'en-US') {
         if (event.target.textContent === 'ADD TO QUEUE') {
           isUnique = arrQueue.find(el => el.id == id)
           if (isUnique === undefined) {
@@ -118,7 +195,29 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
           event.target.textContent = 'ADD TO QUEUE'
           newQueueFilms(arrQueue, arrWatched);
           queueFilms();
-        } 
+        } }
+        if (language === 'uk-UA') {
+          if (event.target.textContent === 'ДОДАТИ В ЧЕРГУ') {
+            isUnique = arrQueue.find(el => el.id == id)
+            if (isUnique === undefined) {
+              arrQueue.push(objPopUp);
+            }
+            localStorage.setItem('Queue', JSON.stringify(arrQueue))
+            event.target.textContent = "ВИДАЛИТИ З ЧЕРГИ"
+            newQueueFilms(arrQueue, arrWatched);
+            queueFilms();
+          }
+          else if (event.target.textContent === "ВИДАЛИТИ З ЧЕРГИ") {
+            isUnique = arrQueue.find(el => el.id == id)
+            if (isUnique !== undefined) {
+              const index = arrQueue.indexOf(isUnique)
+              arrQueue.splice(index, 1)
+            }
+            localStorage.setItem('Queue', JSON.stringify(arrQueue))
+            event.target.textContent = 'ДОДАТИ В ЧЕРГУ'
+            newQueueFilms(arrQueue, arrWatched);
+            queueFilms();
+          } }
       }
 
       addWatched.addEventListener('click', getArrWatched)
@@ -132,7 +231,18 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
   `).show();       
             })
         })
-
+        if (language === 'en-US') {
+          document.querySelector('.play-trailer-btn').innerHTML = ` <img src="../images/play-btn.png" class="play-trailer-btn-icon" width="24" height="24">
+          </img>          Watch the trailer`;
+          document.querySelector('.anchorShare').innerHTML = `<img src="${telegram}" class="anchorShare-icon" width="15" height="15">
+          </img> share in telegram`;
+        }
+        if (language === 'uk-UA') {
+          document.querySelector('.play-trailer-btn').innerHTML = ` <img src="../images/play-btn.png" class="play-trailer-btn-icon" width="24" height="24">
+          </img>          Дивитись трейлер`;
+          document.querySelector('.anchorShare').innerHTML = `<img src="${telegram}" class="anchorShare-icon" width="15" height="15">
+          </img> поділитись`;
+        }
         document.querySelector('.close-btn').addEventListener('click', () => { document.querySelector('.basicLightbox').remove(); document.body.classList.remove('modal-open') })
         
         const changeThemeBtn = document.querySelectorAll(".changeThemeBtn");
@@ -190,7 +300,13 @@ function watchedFilms() {
         }
       })
     })
-  } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
+  } else {
+  if (language === 'en-US') {
+     ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') 
+  } else if(language === 'uk-UA'){
+    ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>')  
+  }
+    }
 }
 };
 
@@ -214,7 +330,13 @@ function queueFilms() {
           }
         })
       })
-    } else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') }
+    } else { 
+      if (language === 'en-US') {
+        ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') 
+     } else if(language === 'uk-UA'){
+       ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>')  
+     }
+     }
   }
 };
     
@@ -258,6 +380,12 @@ const newQueueFilms = function (queue, watched) {
                     }
                 })
             })
-        }else{ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>')}
+        }else{
+          if (language === 'en-US') {
+            ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') 
+         } else if(language === 'uk-UA'){
+           ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>')  
+         }
+        }
       };
 };
