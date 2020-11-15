@@ -6,8 +6,8 @@ import cards from '../templates/cardGallery.hbs';
 import popUpTemplate from '../templates/popUp.hbs';
 import trailerTemplate from '../templates/trailer.hbs';
 import no_image_found from '../images/no-image.jpg';
-import play_btn from '../images/play-btn.png';
 import telegram from '../images/telegram.png';
+
 
 import '../css/popUp.css';
 
@@ -19,6 +19,7 @@ const LANGUAGE = {
 }
 const checkboxLanguageRef = document.querySelector('.language-switch__toggle');
 const bodyRef = document.querySelector('body');
+
 
 const key = '401d61f37c17d956a98039a1a0734109';
 const showModal = async (id) => {
@@ -104,7 +105,6 @@ document.querySelector('.home-film-list').addEventListener('click', (event) => {
 
         data.release_date = Number.parseInt(data.release_date);
         data.telegram = telegram;
-        data.play_btn = play_btn;
         data.poster_path === null ?
           data.poster_path = no_image_found
           : data.poster_path = `https://image.tmdb.org/t/p/w300${data.poster_path}`
