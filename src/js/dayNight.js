@@ -1,23 +1,8 @@
 const main = document.querySelector(".lamp")
 
-import sun from "../images/sun.png"
-import moon from "../images/moon.png"
 
-main.insertAdjacentHTML("beforeend",
-`<div class="theme-switch">
-      
-    <img src="https://cdn2.iconfinder.com/data/icons/gardening-flat-colorful/2048/1954_-_Sun_II-512.png" alt="" class="theme-switch__icon_sun" ></img>
-      <div class="theme-switch__control">
-        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-          aria-label="Переключить между тёмной и светлой темой" />
-        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-        </label>
-        <div aria-hidden="true" class="theme-switch__marker"></div>
-      </div>
 
-      <img src="https://cdn0.iconfinder.com/data/icons/weather-web-app-ui-colored/100/weather-15-512.png" alt="" class="theme-switch__icon_moon" ></img>
-    </div>`
-)
+
 
 
 const body = document.querySelector('body');
@@ -30,7 +15,8 @@ const textFooter=document.querySelector('.copyright')
     const themeChange = function () {
         const switchToggle = document.querySelector("#theme-switch-toggle");
 
-        const fn = function (e) {  
+      const fn = function (e) {  
+           
             button.forEach(e => {
                 e.classList.toggle("filter-button-dark")
             })

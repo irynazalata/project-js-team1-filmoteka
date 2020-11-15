@@ -6,7 +6,10 @@ import emailPopUp from '../templates/emailPopUp.hbs';
 
 const images = { movie: movie};
 
-const showEmailPopUp = function (e) {
+ 
+
+  setTimeout(() => { 
+  const showEmailPopUp = function (e) {
   let accept = '';
   let date = '';
   if (localStorage.getItem('subscription')) {
@@ -40,11 +43,11 @@ const showEmailPopUp = function (e) {
         localStorage.setItem('subscription', JSON.stringify({ accept: false, time: Date.now() }));
       })
       document.querySelector('.basicLightbox').addEventListener('click', () => {
-        console.log('yes')
+       
         localStorage.setItem('subscription', JSON.stringify({ accept: false, time: Date.now() }));
       })
       document.querySelector('.basicLightbox').addEventListener('click', () => {
-        console.log('yes')
+       
         localStorage.setItem('subscription', JSON.stringify({ accept: false, time: Date.now() }));
       })
     }
@@ -52,3 +55,6 @@ const showEmailPopUp = function (e) {
 }
 
 window.addEventListener('mousemove',showEmailPopUp);
+}, 2000);
+
+

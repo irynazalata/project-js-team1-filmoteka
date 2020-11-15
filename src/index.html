@@ -13,9 +13,26 @@
   <body>
     <!--Header-->
     <header class="header" style="background-color: black; height: 230px">
+      
       <div class="header-container container">
-        <div class="lamp"></div>
         <div class="language"></div>
+        <div class="lamp">
+<div class="theme-switch">
+ <img src="https://cdn2.iconfinder.com/data/icons/gardening-flat-colorful/2048/1954_-_Sun_II-512.png" height="24"
+  width="24" alt=""
+    class="theme-switch__icon_sun">
+ <div class="theme-switch__control">
+   <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" 
+      aria-label="Переключить между тёмной и светлой темой" />
+   <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+     </label>
+    <div aria-hidden="true" class="theme-switch__marker"></div>
+     </div>
+ <img src="https://cdn0.iconfinder.com/data/icons/weather-web-app-ui-colored/100/weather-15-512.png" height="33"
+  width="25" alt=""
+    class="theme-switch__icon_moon">
+   </div>         
+        </div>
         <div class="logo-container" style="display: flex; justify-content: space-between; align-items: baseline">
           <a href="./index.html" class="link-logo link">
             <svg class="icon-logo" width="24" height="24">
@@ -48,8 +65,11 @@
       </div>
     </header>
   <main>
+    
       <section class="main">
+        
       <div class="container">
+        
         <ul class="filter list" style="display: flex;justify-content: center; list-style: none">
           <!-- <li class="filter-item">
               <button type="button" class="filter-button">All</button>
@@ -82,8 +102,6 @@
           </div>
         </div>
         <ul class="film-list home-film-list watched">
-          <!-- li в ul вставляються динамічно  -->
-          <!-- cllas"home-film-list"- через js замінюється  на клас "gallery-film-list" -->
         </ul>
         <div id="pagination" class="tui-pagination"></div>
         <div id="search-pagination" class="tui-pagination specificity is-none-pagination"></div>

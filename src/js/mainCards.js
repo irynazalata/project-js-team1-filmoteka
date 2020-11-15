@@ -82,7 +82,7 @@ document.querySelector('.home-film-list').innerHTML ='';
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
       const switchToggle = document.querySelector("#theme-switch-toggle");
-     
+      
       const mainCardsDark = function (){         
           if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
              li.forEach(e => {
@@ -91,7 +91,8 @@ document.querySelector('.home-film-list').innerHTML ='';
             h3.forEach(e => {
                e.classList.remove("gallery-item-title-dark")               
            })
-         } else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
+          }
+          else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
             switchToggle.checked = true
            li.forEach(e => {
              e.classList.add("gallery-list-item-dark")

@@ -15,6 +15,8 @@ export default function library() {
     const emphasisPlus = document.querySelector("#my-library");
     const ul = document.querySelector(".film-list");
 
+    const switchToggle = document.querySelector("#theme-switch-toggle");
+
     const libraryOpen = function () {
 
         filter.remove();
@@ -86,14 +88,12 @@ export default function library() {
                         })
                     }
                 })
-
             })
          }
          else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>') };
         }
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
-      const switchToggle = document.querySelector("#theme-switch-toggle");
      
       const mainCardsDark = function (){         
           if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
@@ -173,7 +173,6 @@ export default function library() {
 
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
-      const switchToggle = document.querySelector("#theme-switch-toggle");
      
       const mainCardsDark = function (){         
           if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
@@ -247,8 +246,32 @@ export default function library() {
     }
 
         }
-    };
-
+    }; 
+            const li = document.querySelectorAll(".gallery-list-item");
+            const h3 = document.querySelectorAll(".gallery-item-title");
+      
+     
+      const mainCardsDark = function (){         
+          if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
+             li.forEach(e => {
+               e.classList.remove("gallery-list-item-dark")               
+             })
+            h3.forEach(e => {
+               e.classList.remove("gallery-item-title-dark")               
+           })
+         } else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
+            switchToggle.checked = true
+           li.forEach(e => {
+             e.classList.add("gallery-list-item-dark")
+           })
+            h3.forEach(e => {
+               e.classList.add("gallery-item-title-dark")               
+           })
+        }
+       }    
+          mainCardsDark()
+          switchToggle.addEventListener('change', mainCardsDark)
+            };
              btnNewQueue.addEventListener('click', newQueueFilms)
     };   
 

@@ -1,5 +1,5 @@
-
 import templateCard from "../templates/cardGallery.hbs";
+
 import no_image_found from "../images/no-image.jpg";
 import '../css/card.css';
 import { spinnerOff, spinnerOn } from "./spinner";
@@ -71,44 +71,82 @@ export const render = function (page = 1) {
                 el.poster_path === null
                     ? (el.poster_path = no_image_found)
                     : (el.poster_path = `https://image.tmdb.org/t/p/w300${el.poster_path}`);
-                document
-                    .querySelector('.home-film-list')
-                    .insertAdjacentHTML('afterbegin', templateCard(el));
-                fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
-                    .then(data => data.json())
-                    .then(data => {
-                        spinnerOff();
-                        document.querySelectorAll('.gallery-item-genre').forEach(el => {
-                            if (el.dataset.id == data.id) {
-                                data.genres.forEach(i => {
-                                    el.insertAdjacentHTML(
-                                        'afterbegin',
-                                        `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
-                                    );
-                                });
-                            }
-                        });
-                    });
-            });       
+        
+                    document
+                        .querySelector('.home-film-list')
+                        .insertAdjacentHTML('afterbegin', templateCard(el));
+                    console.log(el);
+                    fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
+                        .then(data => data.json())
+                        .then(data => {
+                            spinnerOff();
+                            document.querySelectorAll('.gallery-item-genre').forEach(el => {
+                                if (el.dataset.id == data.id) {
+                                    data.genres.forEach(i => {
+                                        el.insertAdjacentHTML(
+                                            'afterbegin',
+                                            `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                                        );
+                                    });
+                                }
+                            });
+                        });          
+            }); 
+                       
+            const li = document.querySelectorAll(".gallery-list-item");
+    const h3 = document.querySelectorAll(".gallery-item-title");
+      const switchToggle = document.querySelector("#theme-switch-toggle");
+      
+    const mainCardsDark = function () {     
+          console.log(1)
+        if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
+            li.forEach(e => {
+                e.classList.remove("gallery-list-item-dark")              
+                
+            })
+            h3.forEach(e => {
+                e.classList.remove("gallery-item-title-dark")               
+            })
+           
+          }
+        else if (localStorage.getItem("checkboxStatus") && localStorage.getItem("light")) {
+            switchToggle.checked = true
+            li.forEach(e => {
+                e.classList.add("gallery-list-item-dark")
+            })
+            h3.forEach(e => {
+                e.classList.add("gallery-item-title-dark")               
+            })
+            
+        }
+       }    
+          mainCardsDark()
+          switchToggle.addEventListener('change', mainCardsDark)
+
         })
         .catch(err => error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name."));
-
+ 
 }
 
+
 const getData = function (e) {
+ 
     e.preventDefault();
-    filter.remove();
+    
     searchPagination.reset();
 
     let eventTarget;
-    e.currentTarget.nodeName === "svg" ? eventTarget = e.target.parentNode.firstElementChild : eventTarget = e.target.firstElementChild;
-    if (eventTarget.value.length >= 1) {
+    
+    e.currentTarget.nodeName === "svg" ? eventTarget =e.target.parentNode.firstElementChild : eventTarget =e.target.firstElementChild;
+      if (eventTarget.value.length >= 1) {
         error.innerHTML = "";
-        render();
-        spinnerOff();
+        filter.remove();
+          render();
+          spinnerOff();
     }
 };
 
 
 form.addEventListener("submit",getData)
-headerSvg.addEventListener("click",getData)
+headerSvg.addEventListener("click", getData)
+ 
