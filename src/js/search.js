@@ -79,7 +79,6 @@ export const render = function (page = 1) {
                     document
                         .querySelector('.home-film-list')
                         .insertAdjacentHTML('afterbegin', templateCard(el));
-                    console.log(el);
                     fetch(`https://api.themoviedb.org/3/movie/${el.id}?api_key=${TOKEN}`)
                         .then(data => data.json())
                         .then(data => {
@@ -102,7 +101,6 @@ export const render = function (page = 1) {
       const switchToggle = document.querySelector("#theme-switch-toggle");
       
     const mainCardsDark = function () {     
-          console.log(1)
         if (localStorage.getItem("checkboxStatus") === 'false' && localStorage.getItem("light") === 'false') {
             li.forEach(e => {
                 e.classList.remove("gallery-list-item-dark")              
