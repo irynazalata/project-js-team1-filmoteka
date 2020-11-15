@@ -2,7 +2,7 @@
   <div>
     <img src="{{poster_path}}" alt="" class="pop-up-img">
     <button type="submit" class="play-trailer-btn">
-      <img src="https://pngimage.net/wp-content/uploads/2018/05/facebook-play-icon-png-1-250x200.png"
+      <img src="{{play_btn}}"
         class="play-trailer-btn-icon" width="24" height="24">
       </img> Watch the trailer </button>
     <a href="tg://msg_url?url=Hello! Look what a cool movie I've found - {{title}}. Genres: {{#each genres}}{{this.name}}/ {{/each}} Release: {{release_date}}. More information can be found on this website: https://irynazalata.github.io/project-js-team1-filmoteka/, Picture: {{poster_path}} "
