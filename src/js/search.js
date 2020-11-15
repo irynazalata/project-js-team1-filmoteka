@@ -54,7 +54,11 @@ export const render = function (page = 1) {
         .then(data => data.json())
         .then(data => {
             if (data.results.length <= 0) {
+                if (language === 'en-US') {
                 return error.insertAdjacentHTML("beforeend", "Search result not successful. Enter the correct movie name.");
+                } else if(language === 'uk-UA'){
+                return error.insertAdjacentHTML("beforeend", "Результат пошуку не вдався. Введіть правильну назву фільму.");
+                }
             } ul.innerHTML = "";
             spinnerOn();
 
