@@ -33,7 +33,7 @@ export function renameAll(language) {
     if (language === 'en-US') {
       refs.home.textContent = 'HOME';
       refs.library.textContent = 'MY LIBRARY';
-      refs.input.setAttribute('placeholder', 'Find your movie!');
+      refs.input.setAttribute('placeholder', 'Search the film');
   
       refs.popularBtn.textContent = 'Popular';
       refs.topratedBtn.textContent = 'Top Rated';
