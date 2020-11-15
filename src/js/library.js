@@ -1,5 +1,10 @@
 import cards from '../templates/cardGallery.hbs';
 import '../css/card.css';
+import { changeLanguage, language } from './popUp';
+import { spinnerOff } from './spinner.js';
+const checkboxLanguageRef = document.querySelector('.language-switch__toggle');
+
+checkboxLanguageRef.addEventListener('click', changeLanguage);
 export default function library() {   
     const filter = document.querySelector('.filter');
     const searchBox = document.querySelector(".search-box");
@@ -19,10 +24,19 @@ export default function library() {
         ul.classList.replace("home-film-list", "library-film-list");
         emphasisMinus.classList.remove("current");
         emphasisPlus.classList.add("current");
+        spinnerOff();
         ul.innerHTML=""
+       if (language === 'en-US') {
         container.insertAdjacentHTML("beforeend",
             '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > Watched</button > <button class="library-btn indent-btn" id="queue">queue</button><button class= "library-btn new-queue" id = "new_queue" >NOT WATCHED YET</div > ')
-       emphasisPlus.removeEventListener("click", libraryOpen);
+        document.querySelector('.language').classList.add('is-none-pagination');
+        }
+       if (language === 'uk-UA') {
+        container.insertAdjacentHTML("beforeend",
+        '<div class="container-button"><button class= "library-btn indent-btn btn-active" id = "watched" > ПЕРЕГЛЯНУТІ</button > <button class="library-btn indent-btn" id="queue">В ЧЕРЗІ</button><button class= "library-btn new-queue" id = "new_queue" >НЕ ПЕРЕГЛЯНУТІ</div > ')
+        document.querySelector('.language').classList.add('is-none-pagination');
+    }
+            emphasisPlus.removeEventListener("click", libraryOpen);
         const watched = document.querySelector("#watched");
         const queue = document.querySelector("#queue");
         const btnNewQueue = document.querySelector('#new_queue')
@@ -33,10 +47,10 @@ export default function library() {
            ul.classList.add("watched")
            ul.classList.remove("newWatched")
            ul.innerHTML = ""
-           const array = JSON.parse(localStorage.getItem('Watched'));
+           const array = JSON.parse(localStorage.getItem('Watched')) || JSON.parse(localStorage.getItem('ПЕРЕГЛЯНУТІ'));
            document.querySelector('#pagination').classList.add('is-none-pagination');
-          
-           if (array !== null && array.length !== 0) {
+       if (language === 'en-US') {
+            if (array !== null && array.length !== 0) {
                array.forEach(el => {
                         el.release_date = new Date(el.release_date).getFullYear();
                    ul.insertAdjacentHTML('afterbegin', cards(el))
@@ -55,7 +69,28 @@ export default function library() {
                })
             }
             else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
+        }
+       if (language === 'uk-UA') {
+           if (array !== null && array.length !== 0) {
+            array.forEach(el => {
+                     el.release_date = new Date(el.release_date).getFullYear();
+                ul.insertAdjacentHTML('afterbegin', cards(el))
+                array.forEach(e => {
+                    if (el.id==e.id) {
+                        e.genres.forEach(i => {
+                            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                'afterbegin',
+                                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                            );
+                        
+                        })
+                    }
+                })
 
+            })
+         }
+         else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>') };
+        }
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
       const switchToggle = document.querySelector("#theme-switch-toggle");
@@ -92,9 +127,9 @@ export default function library() {
             ul.classList.remove("watched")
             ul.classList.remove("newWatched")
         ul.innerHTML = ""
-        const array = JSON.parse(localStorage.getItem('Queue'));
+        const array = JSON.parse(localStorage.getItem('Queue')) || JSON.parse(localStorage.getItem('ЧЕРГА'));
         document.querySelector('#pagination').classList.add('is-none-pagination');
-
+        if (language === 'en-US') {
         if (array !== null && array.length !== 0) {
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
@@ -114,7 +149,28 @@ export default function library() {
             })
             }
             else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
-           
+        }
+       if (language === 'uk-UA') {
+        if (array !== null && array.length !== 0) {
+            array.forEach(el => {
+                 el.release_date = new Date(el.release_date).getFullYear();
+                ul.insertAdjacentHTML('afterbegin', cards(el))
+                array.forEach(e => {
+                    if (el.id == e.id) {
+                        e.genres.forEach(i => {
+                       
+                            document.querySelector(".gallery-item-genre").insertAdjacentHTML(
+                                'afterbegin',
+                                `<span class="gallery-item-genre-name">${i.name}<span class="no-need-symbol">,</span> </span>`,
+                            );
+                        })
+                    }
+                })
+            })
+            }
+            else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>') };
+        }     
+
       const li = document.querySelectorAll(".gallery-list-item")
       const h3=document.querySelectorAll(".gallery-item-title")
       const switchToggle = document.querySelector("#theme-switch-toggle");
@@ -166,8 +222,7 @@ export default function library() {
           ul.innerHTML = ""
           document.querySelector('#pagination').classList.add('is-none-pagination');
           const array = newQueue;
-            
-        if (array !== null && array.length !== 0 ) {
+        if (array !== null && array.length !== 0) {
             array.forEach(el => {
                  el.release_date = new Date(el.release_date).getFullYear();
                 ul.insertAdjacentHTML('afterbegin', cards(el))
@@ -184,8 +239,16 @@ export default function library() {
                 })
             })
             }
-            else { ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') };
-            };
+            else { 
+       if (language === 'en-US') {
+        ul.insertAdjacentHTML("afterbegin", '<p class="no-films">NO FILMS ADDED YET &#9785</p>') 
+    }else if (language === 'uk-UA') {
+        ul.insertAdjacentHTML("afterbegin", '<p class="no-films">ЖОДНОГО ФІЛЬМУ ЩЕ НЕ ДОДАНО &#9785</p>') 
+    }
+
+        }
+    };
+
              btnNewQueue.addEventListener('click', newQueueFilms)
     };   
 

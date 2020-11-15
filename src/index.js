@@ -12,3 +12,4 @@ library();
 import "./js/dayNight.js"
 import "./css/dayNight.css"
 import './js/email.js'
+import './js/languageSwutcher'
