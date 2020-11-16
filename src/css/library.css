@@ -1,0 +1,92 @@
+.library-container {
+  padding-top: 45px;
+  padding-bottom: 65px;
+}
+.library-btn {
+  color: var(--primary-white-color);
+  width: 130.19px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.56);
+  outline: 0px;
+  border: 1px solidvar(--primary-white-color);
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.btn-active {
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+.indent-btn {
+  color: var(--primary-white-color);
+  margin-right: 18px;
+}
+.container-button {
+  margin-top: 46px;
+  display: flex;
+  justify-content: center;
+}
+
+.library {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/mob/Library_1x.jpg');
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+  screen and (min-resolution: 192dpi) and (min-width: 320px),
+  screen and (min-resolution: 2dppx) and (min-width: 320px) {
+  .library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/mob/Library_2x.jpg');
+  }
+}
+@media screen and (min-width: 768px) {
+  .library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/tablet/Library_1x.jpg');
+  }
+  .library-btn {
+    width: 136px;
+    height: 44px;
+  }
+  .library-container {
+    padding-top: 41px;
+    padding-bottom: 65px;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  screen and (min-resolution: 192dpi) and (min-width: 768px),
+  screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/tablet/Library_2x.jpg');
+  }
+}
+@media screen and (min-width: 1024px) {
+  .library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/desktop/Library_1x.jpg');
+  }
+  .library-btn {
+    width: 136px;
+    height: 44px;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1024px),
+  screen and (min-resolution: 192dpi) and (min-width: 1024px),
+  screen and (min-resolution: 2dppx) and (min-width: 1024px) {
+  .library {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/desktop/Library_2x.jpg');
+  }
+}
+.no-films {
+  margin: 0 auto;
+  font-size: 25px;
+  margin-bottom: 50vh;
+}
+.new-queue {
+  font-size: 12px;
+}

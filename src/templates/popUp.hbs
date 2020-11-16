@@ -1,0 +1,48 @@
+<div class="pop-up container">
+  <div>
+    <img src="{{poster_path}}" alt="" class="pop-up-img">
+    <button type="submit" class="play-trailer-btn">
+      <img src="{{play_btn}}"
+        class="play-trailer-btn-icon" width="24" height="24">
+      </img> Watch the trailer </button>
+    <a href="tg://msg_url?url=Hello! Look what a cool movie I've found - {{title}}. Genres: {{#each genres}}{{this.name}}/ {{/each}} Release: {{release_date}}. More information can be found on this website: https://irynazalata.github.io/project-js-team1-filmoteka/, Picture: {{poster_path}} "
+      class="anchorShare changeThemeBtn">
+      <img src="{{telegram}}" class="anchorShare-icon" width="15" height="15">
+      </img>share in telegram </a>
+  </div>
+  <div class="pop-up-content">
+    <h2 class="pop-up-title changeThemeText">{{title}}</h2>
+    <div class="pop-up-info">
+      <ul class="pop-up-info-list">
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title changeThemeText">Vote / Votes</p>
+          <p class="vote-info vote-average changeThemeText">{{vote_average}}</p>
+          <span class="vote-span changeThemeText"> / </span>
+          <p class="pop-up-info-text vote-count changeThemeText">{{vote_count}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title changeThemeText">Popularity</p>
+          <p class="pop-up-info-text changeThemeText">{{popularity}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title original-title changeThemeText">Original Title</p>
+          <p class="original-title-name changeThemeText">{{original_title}}</p>
+        </li>
+        <li class="pop-up-info-list-item">
+          <p class="pop-up-info-list-title changeThemeText">Genre</p>
+          <ul class="genre-name"> {{#each genres}} <li class="pop-up-info-text changeThemeText">{{this.name}}<p> / </p>
+            </li> {{/each}} </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="pop-up-description">
+      <p class="pop-up-description-title changeThemeText">ABOUT</p>
+      <p class="pop-up-description-text changeThemeText ">{{overview}}</p>
+    </div>
+    <div class="pop-up-buttons">
+      <button type="button" class="pop-up-btn-watched">{{text_watched_btn}}</button>
+      <button type="button" class="pop-up-btn-queue">{{text_queue_btn}}</button>
+    </div>
+  </div>
+  <button type="button" class="close-btn" data-action="close-pop-up"></button>
+</div>

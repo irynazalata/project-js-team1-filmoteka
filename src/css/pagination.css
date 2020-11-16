@@ -1,0 +1,78 @@
+.tui-pagination .tui-page-btn,
+.tui-pagination .tui-first, 
+.tui-pagination .tui-prev, 
+.tui-pagination .tui-next, 
+.tui-pagination .tui-last, 
+.tui-pagination .tui-prev-is-ellip, 
+.tui-pagination .tui-next-is-ellip {
+    border: none !important;
+}
+
+.tui-pagination .tui-page-btn.tui-is-selected {
+    background-color: var(--accent-color);
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+}
+.tui-pagination .tui-page-btn.tui-is-selected:hover {
+  background-color: var(--accent-color);
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  color: var(--primary-white-color);
+}
+@media screen and (max-width: 767px) {
+.tui-pagination.specificity .tui-page-btn {
+  border-width: 0;
+  font-weight: 500;
+  color: var(--modal-secondary-text-color);
+  width: 22px;
+  }
+}
+
+    
+.tui-pagination .tui-first-child.tui-is-selected,
+.tui-page-btn.tui-is-selected,
+.tui-pagination.tui-page-btn {
+  width: 40px !important;
+  height: 40px;
+  padding: 14px 0 !important;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+  
+.tui-pagination .tui-page-btn{
+    font-size: 14px;
+}
+.tui-pagination.specificity .tui-page-btn:hover {
+  border-radius: 5px;
+}
+
+.tui-pagination.specificity .tui-first-child.tui-is-selected {
+  border: none;
+}
+
+.tui-pagination.specificity .tui-last-child.tui-is-selected {
+  border: none;
+}
+
+.tui-pagination.specificity {
+  margin: 0;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .tui-pagination.specificity {
+    margin-top: 50px;
+  }
+}
+  
+  /* Скрывает пагинацию*/
+.is-none-pagination {
+  display: none;
+}
+
+.tui-pagination.specificity .tui-first-child.tui-is-selected, .tui-pagination.specificity .tui-last-child.tui-is-selected{
+    border: 0;
+}

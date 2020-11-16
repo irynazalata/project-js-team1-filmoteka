@@ -1,0 +1,324 @@
+.pop-up {
+  width: 90vw;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: white;
+  height: 570px;
+  overflow-y: scroll;
+}
+.pop-up-img {
+  width: 280px;
+  margin: 15px auto 10px;
+}
+.pop-up-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
+  margin-bottom: 20px;
+}
+.pop-up-info {
+  display: flex;
+}
+.pop-up-info-list li {
+  display: flex;
+  margin-bottom: 10px;
+}
+.pop-up-info-list-title {
+  width: 70px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--modal-secondary-text-color);
+}
+.pop-up-info-text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  padding-top: 1px;
+
+  display: flex;
+  color: var(--primary-text-color);
+}
+.vote-info {
+  display: flex;
+  align-items: baseline;
+  padding-top: 1px;
+}
+.vote-span {
+  margin-left: 3px;
+  margin-right: 7px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-align: center;
+  color: var(--modal-secondary-text-color);
+}
+.vote-average {
+  display: inline;
+  height: 16px;
+  width: 36px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  text-align: center;
+}
+.original-title-name {
+  width: 160px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  color: var(--primary-text-color);
+}
+.genre-name {
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  align-items: center;
+  color: var(--primary-text-color);
+}
+.genre-name li:last-child p {
+  display: none;
+}
+.genre-name li p {
+  margin-left: 1px;
+  margin-right: 2px;
+}
+.pop-up-description {
+  margin-bottom: 40px;
+}
+.pop-up-description-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.34;
+  text-transform: uppercase;
+
+  color: var(--primary-text-color);
+}
+.pop-up-description-text {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.67;
+  color: var(--primary-text-color);
+}
+.pop-up-buttons button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
+  width: 118px;
+  height: 44px;
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.34;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  color: var(--primary-text-color);
+  background-color: var(--primary-white-color);
+  border: 1px solid var(--primary-text-color);
+}
+.pop-up-btn-watched {
+  margin-right: 0;
+  padding: 13px 3px;
+}
+
+.pop-up-buttons button:hover {
+  outline: none;
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border: none;
+}
+.trailer {
+  width: 100vw;
+  height: 60vh;
+}
+
+@media screen and (min-width: 768px) {
+  .pop-up {
+    display: flex;
+    justify-content: center;
+    padding: 60px 35px 0;
+    width: 90vw;
+  }
+  .pop-up-img {
+    width: 294px;
+    height: 416px;
+    margin: 0 auto 10px;
+  }
+  .pop-up-content {
+    margin-left: 50px;
+    max-width: 294px;
+  }
+  .pop-up-title {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+  .original-title-name {
+    width: 190px;
+  }
+  .pop-up-description {
+    margin-bottom: 20px;
+  }
+  .pop-up-buttons button {
+    margin-bottom: 60px;
+    width: 130px;
+    height: 44px;
+    font-size: 10px;
+  }
+  .pop-up-btn-watched {
+    margin-right: 15px;
+    padding: 13px 5px;
+  }
+  .pop-up-btn-queue {
+    margin-right: 15px;
+  }
+  .trailer {
+    width: 70vw;
+    height: 60vh;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .pop-up {
+    display: flex;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 80vw;
+    overflow-y: auto;
+  }
+  .pop-up-img {
+    width: auto;
+    height: 356px;
+  }
+  .pop-up-content {
+    max-width: 426px;
+  }
+  .pop-up-info-list-title {
+    margin-right: 82px;
+  }
+  .original-title-name {
+    width: 270px;
+  }
+  .pop-up-description-text {
+    height: 110px;
+    overflow-y: auto;
+  }
+  .pop-up-buttons button {
+    width: 150px;
+    font-size: 12px;
+  }
+  .trailer {
+    width: 60vw;
+    height: 60vh;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 1024px;
+    padding: 60px 71px;
+  }
+}
+
+.play-trailer-btn {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 20px;
+  background-color: var(--accent-color);
+  color: var(--primary-white-color);
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 166px;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.34;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+.anchorShare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--primary-text-color);
+  background-color: var(--primary-white-color);
+  border: 1px solid var(--primary-text-color);
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 166px;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.34;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+.play-trailer-btn-icon {
+  margin: auto 5px;
+  color: var(--accent-color);
+}
+.anchorShare-icon {
+  margin: auto 5px auto 0px;
+
+  color: var(--accent-color);
+}
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_close.svg/1200px-OOjs_UI_icon_close.svg.png');
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border-color: transparent;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .close-btn {
+    top: 15px;
+    right: 25px;
+  }
+}
+
+.pop-up-dark {
+  color: white;
+  background-color: hsl(253, 21%, 16%);
+}
+.changeThemeBtn-dark {
+  color: white;
+  background-color: #120f1f;
+  border: solid 1px white;
+}
+.pop-up-buttons-dark button {
+  color: white;
+  background-color: #120f1f;
+  border: solid 1px white;
+}
+.changeThemeText-dark {
+  color: white;
+}
+.close-btn-dark {
+  background-color: white;
+}
