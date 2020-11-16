@@ -3,6 +3,7 @@ import 'basiclightbox/src/styles/main.scss';
 import '../css/email.css';
 import movie from '../images/movie.png';
 import emailPopUp from '../templates/emailPopUp.hbs';
+import emailPopUpEn from '../templates/emailPopUpEn.hbs';
 
 const images = { movie: movie};
 
