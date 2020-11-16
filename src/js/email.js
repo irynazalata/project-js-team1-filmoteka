@@ -2,12 +2,45 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/src/styles/main.scss';
 import '../css/email.css';
 import movie from '../images/movie.png';
-import emailPopUp from '../templates/emailPopUp.hbs';
 import emailPopUpEn from '../templates/emailPopUpEn.hbs';
+import emailPopUpUa from '../templates/emailPopUpUa.hbs';
 
 const images = { movie: movie};
+let language;
+const LANGUAGE = {
+  en: 'en-US',
+  ua: 'uk-UA',
+}
+const checkboxLanguageRef = document.querySelector('.language-switch__toggle');
+const bodyRef = document.querySelector('body');
+checkboxLanguageRef.addEventListener('click', changeLanguage);
 
+(function initLanguage() {
+  if (localStorage.getItem('language') === null) {
+    language = LANGUAGE.en; 
+    localStorage.setItem('language', language); 
+  } else {
+    language = localStorage.getItem('language');
+  }
+  checkboxLanguageRef.checked =
+    language === LANGUAGE.en ? false : true;
+  bodyRef.classList.add(language);
+})();
  
+function changeLanguage() {
+  let oldLanguage = localStorage.getItem('language');
+  if (language === LANGUAGE.en) {
+    language = LANGUAGE.ua;
+    localStorage.setItem('language', language); 
+    bodyRef.classList.replace(oldLanguage, language);
+    checkboxLanguageRef.checked = true;
+  } else {
+    language = LANGUAGE.en;
+    localStorage.setItem('language', language);
+    bodyRef.classList.replace(oldLanguage, language);
+    checkboxLanguageRef.checked = false;
+  }
+}
 
   setTimeout(() => { 
   const showEmailPopUp = function (e) {
@@ -22,9 +55,16 @@ const images = { movie: movie};
   }
   if (!(localStorage.getItem('subscription')) || ((Date.now() - date) > 259200000)) {
     if (e.clientY <= 5) {
+      if (language === 'en-US') {
       basicLightbox.create(`
-      ${emailPopUp(images)}
-  `).show();
+      ${emailPopUpEn(images)}`
+      ).show();
+    } else if (language === 'uk-UA') {
+        basicLightbox.create(`
+        ${emailPopUpUa(images)}`
+        ).show();
+      }
+
       document.body.querySelector('.basicLightbox').classList.add('light-popup');
       window.removeEventListener('mousemove', showEmailPopUp);
 
@@ -59,3 +99,7 @@ window.addEventListener('mousemove',showEmailPopUp);
 }, 2000);
 
 
+// else if (language === 'uk-UA') {
+//   basicLightbox.create(`
+//   ${emailPopUpUa(images)}`
+// }
