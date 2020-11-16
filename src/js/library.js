@@ -16,7 +16,6 @@ export default function library() {
   const ul = document.querySelector('.film-list');
 
   const switchToggle = document.querySelector('#theme-switch-toggle');
-
   const libraryOpen = function () {
     filter.remove();
     container.removeChild(searchBox);
@@ -55,7 +54,8 @@ export default function library() {
       const array =
         JSON.parse(localStorage.getItem('Watched')) ||
         JSON.parse(localStorage.getItem('ПЕРЕГЛЯНУТІ'));
-      document.querySelector('#pagination').classList.add('is-none-pagination');
+        document.querySelector('#pagination').classList.add('is-none-pagination');
+        document.querySelector('#search-pagination').classList.add('is-none-pagination');
       if (language === 'en-US') {
         if (array !== null && array.length !== 0) {
           array.forEach(el => {
